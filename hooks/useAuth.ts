@@ -43,7 +43,7 @@ const useAuth = () => {
         duration: 3000,
       });
       if (router.pathname === "/" && data.userType === "Admin") {
-        router.push("/home");
+        router.push("/students");
       } else {
         router.push("/");
       }

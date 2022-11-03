@@ -3,10 +3,12 @@ import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
     Bars3BottomLeftIcon,
     BellIcon,
-    FolderIcon,
+    DocumentTextIcon,
     XMarkIcon,
     CodeBracketIcon,
-    AdjustmentsHorizontalIcon
+    AdjustmentsHorizontalIcon,
+    BuildingLibraryIcon,
+    AcademicCapIcon
 } from '@heroicons/react/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import Cookies from 'js-cookie'
@@ -14,13 +16,16 @@ import { useRouter } from "next/router";
 
 const Dashboard = () => {
     const navigation = [
-        { name: 'Student Records', href: '#', icon: FolderIcon, current: true },
-        { name: 'Developer', href: '#', icon: CodeBracketIcon, current: false },
-        { name: 'Settings', href: '#', icon: AdjustmentsHorizontalIcon, current: false }
+        { name: 'Students', href: '/students', icon: AcademicCapIcon, current: true },
+        { name: 'Schools', href: '/schools', icon: BuildingLibraryIcon, current: false },
+        { name: 'Form 137', href: '/form137', icon: DocumentTextIcon, current: false },
+        { name: 'Form 138', href: '/form138', icon: DocumentTextIcon, current: false },
+        { name: 'Good Moral Certificates', href: '/good-moral-certificates', icon: DocumentTextIcon, current: false },
+        { name: 'Birth Certificates', href: '/birth-certificates', icon: DocumentTextIcon, current: false },
+        { name: 'Developer', href: '/developer', icon: CodeBracketIcon, current: false },
+        { name: 'Settings', href: '/settings', icon: AdjustmentsHorizontalIcon, current: false }
     ]
     const userNavigation = [
-        { name: 'Your Profile', href: '#' },
-        { name: 'Settings', href: '#' },
         { name: 'Sign out' },
     ]
 
@@ -85,18 +90,17 @@ const Dashboard = () => {
                                             alt="Your Company"
                                         />
                                     </div>
-                                    <div className="flex-1 h-0 mt-5 overflow-y-auto">
-                                        <nav className="px-2 space-y-1">
+                                    <div className="flex-1 h-0 mt-5 overflow-y-auto cursor-pointer">
+                                        <nav className="px-2 space-y-1 cursor-pointer">
                                             {navigation.map((item) => (
                                                 <a
                                                     key={item.name}
-                                                    href={item.href}
                                                     className={classNames(
-                                                        item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600',
-                                                        'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                                                        item.current ? 'bg-indigo-800 text-white cursor-pointer' : 'text-indigo-100 hover:bg-indigo-600',
+                                                        'group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer'
                                                     )}
                                                 >
-                                                    <item.icon className="flex-shrink-0 w-6 h-6 mr-4 text-indigo-300" aria-hidden="true" />
+                                                    <item.icon className="flex-shrink-0 w-6 h-6 mr-4 text-indigo-300 cursor-pointer" aria-hidden="true" />
                                                     {item.name}
                                                 </a>
                                             ))}
@@ -105,7 +109,6 @@ const Dashboard = () => {
                                 </Dialog.Panel>
                             </Transition.Child>
                             <div className="flex-shrink-0 w-14" aria-hidden="true">
-                                {/* Dummy element to force sidebar to shrink to fit close icon */}
                             </div>
                         </div>
                     </Dialog>
@@ -116,11 +119,7 @@ const Dashboard = () => {
                     {/* Sidebar component, swap this element with another sidebar if you like */}
                     <div className="flex flex-col flex-grow pt-5 overflow-y-auto bg-indigo-500">
                         <div className="flex items-center flex-shrink-0 px-4">
-                            <img
-                                className="w-auto h-8"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
-                                alt="Your Company"
-                            />
+                            <h1 className="text-3xl font-bold tracking-tight text-white">DoCurator</h1>
                         </div>
                         <div className="flex flex-col flex-1 mt-40">
                             <nav className="flex-1 px-2 pb-4 space-y-1">
@@ -224,11 +223,10 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-
                     <main>
                         <div className="py-6">
                             <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
-                                <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
+                                <h1 className="text-2xl font-semibold text-gray-900">Students</h1>
                             </div>
                             <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
                                 <div className="py-4">
