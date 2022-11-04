@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 
 const Dashboard = () => {
     const navigation = [
-        { name: 'Students', href: '/home', icon: AcademicCapIcon, current: true },
+        { name: 'Students', href: '/students', icon: AcademicCapIcon, current: true },
         { name: 'Schools', href: '/schools', icon: BuildingLibraryIcon, current: false },
         { name: 'Form 137', href: '/form137', icon: DocumentTextIcon, current: false },
         { name: 'Form 138', href: '/form138', icon: DocumentTextIcon, current: false },
