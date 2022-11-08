@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import addUser from "../hooks/addUser";
+import addUser from "../hooks/useUser";
 import { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";

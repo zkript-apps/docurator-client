@@ -1,10 +1,10 @@
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import { addUser } from "../utils/api/user";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 
-const useAuth = () => {
+const useUser = () => {
   const router = useRouter();
   const { mutate: triggerAddUser, isLoading: isAddUserLoading } = useMutation(
     async (data) => await addUser(data),
@@ -37,4 +37,4 @@ const useAuth = () => {
   };
 };
 
-export default useAuth;
+export default useUser;
