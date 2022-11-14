@@ -46,7 +46,7 @@ export const Table = (tableData) => {
         <table {...getTableProps()} className="min-w-full divide-y divide-gray-300 table-auto">
           <thead className="bg-gray-50">
             {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()} className="bg-white divide-y divide-gray-200">
+              <tr {...headerGroup.getHeaderGroupProps()} className="bg-white">
                 {headerGroup.headers.map((column) => (
                   <th {...column.getHeaderProps()} className="py-3.5 pl-4 pr-1 text-left text-sm font-semibold text-gray-900 sm:pl-6">{column.render("Header")}</th>
                 ))}
@@ -93,7 +93,7 @@ export const Table = (tableData) => {
             </button>
             <button
               onClick={() => nextPage()}
-              disabled={!canPreviousPage}
+              disabled={!canNextPage}
               type="button"
               className="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 shadow-sm focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             >
