@@ -55,24 +55,6 @@ const useAuth = () => {
       });
     },
   });
-  const { mutate: triggerAddUser, isLoading: isAddUserLoading } = useMutation(
-    async (data) => await addUser(data),
-    {
-      onSuccess: () => {
-        toast.success("Successfully created! You can now login", {
-          id: "addUser",
-          duration: 3000,
-        });
-        router.push("/");
-      },
-      onError: (err) => {
-        toast.error(err, {
-          id: "addUser",
-          duration: 5000,
-        });
-      },
-    }
-  );
   useEffect(() => {
     if (isAuthenticateUserLoading) {
       toast.loading("Logging in...", {
@@ -81,13 +63,6 @@ const useAuth = () => {
     }
   }, [isAuthenticateUserLoading]);
   useEffect(() => {
-    if (isAddUserLoading) {
-      toast.loading("Loading...", {
-        id: "addUser",
-      });
-    }
-  }, [isAddUserLoading]);
-  useEffect(() => {
     if (router.pathname !== "/" && router.pathname !== "/create") {
       refetchVerifyLogin();
     }
@@ -95,11 +70,9 @@ const useAuth = () => {
   return {
     verifyLoginData,
     triggerAuthenticateUser,
-    triggerAddUser,
     isVerifyLoginLoading,
     refetchVerifyLogin,
     isAuthenticateUserLoading,
-    isAddUserLoading,
   };
 };
 
