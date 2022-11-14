@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React, { useMemo, useState, useEffect } from "react";
-import { useTable, usePagination } from "react-table";
-import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/20/solid'
+import { useTable, usePagination, useSortBy } from "react-table";
+import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/20/solid'
 
 export const Table = (tableData) => {
   const [newTableData, setNewTableData] = useState([])
@@ -28,7 +28,7 @@ export const Table = (tableData) => {
   } = useTable({
     columns,
     data,
-  }, usePagination);
+  }, useSortBy, usePagination);
 
   const { pageIndex } = state;
 
@@ -44,11 +44,21 @@ export const Table = (tableData) => {
     <>
       <div className="mt-8 overflow-auto divide-y divide-gray-300 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
         <table {...getTableProps()} className="min-w-full divide-y divide-gray-300 table-auto">
-          <thead className="bg-gray-50">
+          <thead>
             {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()} className="bg-white">
+              <tr {...headerGroup.getHeaderGroupProps()} className="bg-gray-200">
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()} className="py-3.5 pl-4 pr-1 text-left text-sm font-semibold text-gray-900 sm:pl-6">{column.render("Header")}</th>
+                  <th {...column.getHeaderProps(column.getSortByToggleProps())} className="py-3.5 pl-4 text-left text-sm font-semibold sm:pl-6">
+                    <span className="flex">
+                      {column.render("Header")}
+                      {column.isSorted
+                        ? column.isSortedDesc
+                          ? <ArrowDownIcon className="w-5 h-5 text-blue-500" />
+                          : <ArrowUpIcon className="w-5 h-5 text-blue-500" />
+                        : ""}
+                    </span>
+
+                  </th>
                 ))}
               </tr>
             ))}
