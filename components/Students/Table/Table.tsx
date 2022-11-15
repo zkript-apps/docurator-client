@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-key */
 import React, { useMemo, useState, useEffect } from "react";
-import { useTable, usePagination, useSortBy } from "react-table";
+import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/20/solid'
+import { GlobalFilter } from "./GlobalFilter";
+
 
 export const Table = (tableData) => {
   const [newTableData, setNewTableData] = useState([])
@@ -24,13 +26,14 @@ export const Table = (tableData) => {
     state,
     gotoPage,
     pageCount,
-    setPageSize
+    setPageSize,
+    setGlobalFilter
   } = useTable({
     columns,
     data,
-  }, useSortBy, usePagination);
+  }, useGlobalFilter, useSortBy, usePagination);
 
-  const { pageIndex } = state;
+  const { pageIndex, globalFilter } = state;
 
   useEffect(() => {
     if (tableData.tableColumns && tableData.tableData.items) {
@@ -42,7 +45,8 @@ export const Table = (tableData) => {
 
   return (
     <>
-      <div className="mt-8 overflow-auto divide-y divide-gray-300 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <div className="mt-3 overflow-auto divide-y divide-gray-300 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
         <table {...getTableProps()} className="min-w-full divide-y divide-gray-300 table-auto">
           <thead>
             {headerGroups.map((headerGroup) => (
