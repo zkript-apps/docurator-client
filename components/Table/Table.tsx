@@ -5,7 +5,7 @@ import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ArrowDownIcon, ArrowUpIc
 import { GlobalFilter } from "./GlobalFilter";
 
 
-export const Table = (tableData) => {
+export const Table = ({ tableData, tableColumns }) => {
   const [newTableData, setNewTableData] = useState([])
   const [newTableColumns, setNewTableColumns] = useState([])
 
@@ -36,12 +36,12 @@ export const Table = (tableData) => {
   const { pageIndex, globalFilter } = state;
 
   useEffect(() => {
-    if (tableData.tableColumns && tableData.tableData.items) {
-      setNewTableColumns(tableData.tableColumns)
-      setNewTableData(tableData.tableData.items)
+    if (tableColumns && tableData?.items) {
+      setNewTableColumns(tableColumns)
+      setNewTableData(tableData?.items)
       setPageSize(15)
     }
-  }, [newTableColumns, newTableData, tableData.tableColumns, tableData.tableData])
+  }, [setPageSize, tableColumns, tableData?.items])
 
   return (
     <>
@@ -81,7 +81,7 @@ export const Table = (tableData) => {
           </tbody>
         </table>
         <div className="flex justify-end">
-          <span className="inline-flex mt-5 mb-5 mr-10 rounded-md isolate">
+          <span className="inline-flex mt-5 mb-5 mr-5 rounded-md isolate">
             <span className="mr-4 place-self-center drop-shadow-none">
               Page{" "}
               <strong>
