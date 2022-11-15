@@ -41,7 +41,7 @@ export const Table = (tableData) => {
       setNewTableData(tableData.tableData.items)
       setPageSize(15)
     }
-  }, [newTableColumns, newTableData, tableData.tableColumns])
+  }, [newTableColumns, newTableData, tableData.tableColumns, tableData.tableData])
 
   return (
     <>

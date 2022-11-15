@@ -12,7 +12,7 @@ import {
 } from '@heroicons/react/24/outline'
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
-import StudentList from './Students/studentList'
+import StudentList from './Table/Students/studentList'
 
 const Dashboard = () => {
 
