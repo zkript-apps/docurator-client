@@ -9,7 +9,7 @@ const Settings = () => {
     const router = useRouter();
     if (authCookie) {
         return (
-            <Dashboard />
+            <Dashboard currentPage={"Students"} />
         )
     } else {
         useEffect(() => {
