@@ -10,11 +10,12 @@ import {
     BuildingLibraryIcon,
     AcademicCapIcon
 } from '@heroicons/react/24/outline'
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
+import StudentList from './Table/Students/studentList'
 
 const Dashboard = () => {
+
     const navigation = [
         { name: 'Students', href: '/students', icon: AcademicCapIcon, current: true },
         { name: 'Schools', href: '/schools', icon: BuildingLibraryIcon, current: false },
@@ -156,18 +157,6 @@ const Dashboard = () => {
                                     <label htmlFor="search-field" className="sr-only">
                                         Search
                                     </label>
-                                    <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
-                                            <MagnifyingGlassIcon className="w-5 h-5" aria-hidden="true" />
-                                        </div>
-                                        <input
-                                            id="search-field"
-                                            className="block w-full h-full py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 border-transparent focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
-                                            placeholder="Search"
-                                            type="search"
-                                            name="search"
-                                        />
-                                    </div>
                                 </form>
                             </div>
                             <div className="flex items-center ml-4 md:ml-6">
@@ -225,14 +214,7 @@ const Dashboard = () => {
                     </div>
                     <main>
                         <div className="py-6">
-                            <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
-                                <h1 className="text-2xl font-semibold text-gray-900">Students</h1>
-                            </div>
-                            <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
-                                <div className="py-4">
-                                    <div className="border-4 border-gray-200 border-dashed rounded-lg h-96" />
-                                </div>
-                            </div>
+                            <StudentList />
                         </div>
                     </main>
                 </div>
