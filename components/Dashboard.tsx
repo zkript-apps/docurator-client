@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
     Bars3BottomLeftIcon,
@@ -13,18 +13,21 @@ import {
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
 import StudentList from './Table/Students/studentList'
+import Form137List from './Table/Form137/form137List';
 
-const Dashboard = () => {
+const Dashboard = ({ currentPage }) => {
+
+    console.log(currentPage)
 
     const navigation = [
-        { name: 'Students', href: '/students', icon: AcademicCapIcon, current: true },
-        { name: 'Schools', href: '/schools', icon: BuildingLibraryIcon, current: false },
-        { name: 'Form 137', href: '/form137', icon: DocumentTextIcon, current: false },
-        { name: 'Form 138', href: '/form138', icon: DocumentTextIcon, current: false },
-        { name: 'Good Moral Certificates', href: '/good-moral-certificates', icon: DocumentTextIcon, current: false },
-        { name: 'Birth Certificates', href: '/birth-certificates', icon: DocumentTextIcon, current: false },
-        { name: 'Developer', href: '/developer', icon: CodeBracketIcon, current: false },
-        { name: 'Settings', href: '/settings', icon: AdjustmentsHorizontalIcon, current: false }
+        { name: 'Students', href: '/students', icon: AcademicCapIcon, current: currentPage === "Students" ? true : false },
+        { name: 'Schools', href: '/schools', icon: BuildingLibraryIcon, current: currentPage === "Schools" ? true : false },
+        { name: 'Form 137', href: '/form137', icon: DocumentTextIcon, current: currentPage === "Form 137" ? true : false },
+        { name: 'Form 138', href: '/form138', icon: DocumentTextIcon, current: currentPage === "Form 138" ? true : false },
+        { name: 'Good Moral Certificates', href: '/good-moral-certificates', icon: DocumentTextIcon, current: currentPage === "Good Moral Certificates" ? true : false },
+        { name: 'Birth Certificates', href: '/birth-certificates', icon: DocumentTextIcon, current: currentPage === "Birth Certificates" ? true : false },
+        { name: 'Developer', href: '/developer', icon: CodeBracketIcon, current: currentPage === "Developer" ? true : false },
+        { name: 'Settings', href: '/settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
     ]
     const userNavigation = [
         { name: 'Sign out' },
@@ -214,7 +217,9 @@ const Dashboard = () => {
                     </div>
                     <main>
                         <div className="py-6">
-                            <StudentList />
+                            {currentPage === "Students" ? <StudentList /> : null}
+                            {currentPage === "Form 137" ? <Form137List /> : null}
+
                         </div>
                     </main>
                 </div>
