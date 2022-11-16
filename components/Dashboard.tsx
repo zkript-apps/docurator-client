@@ -13,7 +13,9 @@ import {
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
 import StudentList from './Table/Students/studentList'
+import BirthCertificatesList from './Table/BirthCertificate/birthCertificateList';
 import Form137List from './Table/Form137/form137List';
+
 
 const Dashboard = ({ currentPage }) => {
 
@@ -218,8 +220,8 @@ const Dashboard = ({ currentPage }) => {
                     <main>
                         <div className="py-6">
                             {currentPage === "Students" ? <StudentList /> : null}
+                            {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
                             {currentPage === "Form 137" ? <Form137List /> : null}
-
                         </div>
                     </main>
                 </div>

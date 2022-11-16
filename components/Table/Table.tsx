@@ -81,7 +81,7 @@ export const Table = ({ tableData, tableColumns }) => {
           </tbody>
         </table>
         <div className="flex justify-end">
-          <span className="inline-flex mt-5 mb-5 mr-5 rounded-md isolate">
+          <span className="inline-flex py-2 mr-5 rounded-md isolate">
             <span className="mr-4 place-self-center drop-shadow-none">
               Page{" "}
               <strong>
