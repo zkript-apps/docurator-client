@@ -20,7 +20,7 @@ const useAuth = () => {
     },
     {
       onError: (data) => {
-        if (router.pathname !== "/" && router.pathname !== "/create") {
+        if (router.pathname !== "/") {
           toast.error(data, {
             id: "authenticateUser",
             duration: 3000,
@@ -38,13 +38,17 @@ const useAuth = () => {
   } = useMutation(async (data) => await authenticateUser(data), {
     onSuccess: (data) => {
       Cookies.set("l_auth", data.token);
-      toast.success("You are now authenticated", {
-        id: "authenticateUser",
-        duration: 3000,
-      });
       if (router.pathname === "/" && data.userType === "Admin") {
+        toast.success("You are now authenticated", {
+          id: "authenticateUser",
+          duration: 3000,
+        });
         router.push("/students");
       } else {
+        toast.error("You are not authorized to do that action", {
+          id: "authenticateUserError",
+          duration: 3000,
+        });
         router.push("/");
       }
     },
@@ -55,13 +59,6 @@ const useAuth = () => {
       });
     },
   });
-  useEffect(() => {
-    if (isAuthenticateUserLoading) {
-      toast.loading("Logging in...", {
-        id: "authenticateUser",
-      });
-    }
-  }, [isAuthenticateUserLoading]);
   useEffect(() => {
     if (router.pathname !== "/" && router.pathname !== "/create") {
       refetchVerifyLogin();

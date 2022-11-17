@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
     Bars3BottomLeftIcon,
@@ -15,11 +15,25 @@ import { useRouter } from "next/router";
 import StudentList from './Table/Students/studentList'
 import BirthCertificatesList from './Table/BirthCertificate/birthCertificateList';
 import Form137List from './Table/Form137/form137List';
+import useAuth from '../hooks/useAuth';
 
 
 const Dashboard = ({ currentPage }) => {
+    const { verifyLoginData } = useAuth();
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [namePlaceHolder, setNamePlaceHolder] = useState("")
 
-    console.log(currentPage)
+    useEffect(() => {
+        if (verifyLoginData?.firstName && verifyLoginData?.lastName) {
+            setFirstName(verifyLoginData?.firstName?.slice(0, 1).toUpperCase())
+            setLastName(verifyLoginData?.lastName?.slice(0, 1).toUpperCase())
+            setNamePlaceHolder(firstName + lastName)
+        }
+    }, [firstName, lastName, namePlaceHolder, verifyLoginData])
+
+
+
 
     const navigation = [
         { name: 'Students', href: '/students', icon: AcademicCapIcon, current: currentPage === "Students" ? true : false },
@@ -92,7 +106,7 @@ const Dashboard = ({ currentPage }) => {
                                     <div className="flex items-center flex-shrink-0 px-4">
                                         <img
                                             className="w-auto h-8"
-                                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
+                                            src={`https://placehold.jp/24/6366f1/ffffff/50x50.png?text=${namePlaceHolder}`}
                                             alt="Your Company"
                                         />
                                     </div>
@@ -180,7 +194,7 @@ const Dashboard = ({ currentPage }) => {
                                             <span className="sr-only">Open user menu</span>
                                             <img
                                                 className="w-8 h-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                src={`https://placehold.jp/24/6366f1/ffffff/50x50.png?text=${namePlaceHolder}`}
                                                 alt=""
                                             />
                                         </Menu.Button>
