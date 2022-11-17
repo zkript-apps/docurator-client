@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
     Bars3BottomLeftIcon,
@@ -15,11 +15,26 @@ import { useRouter } from "next/router";
 import StudentList from './Table/Students/studentList'
 import BirthCertificatesList from './Table/BirthCertificate/birthCertificateList';
 import Form137List from './Table/Form137/form137List';
+import useAuth from '../hooks/useAuth';
 
 
-const Dashboard = ({ currentPage }) => {
+const Dashboard = ({ currentPage }: any) => {
+    const { verifyLoginData } = useAuth();
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [firstNameLetter, setFirstNameLetter] = useState("")
+    const [lastNameLetter, setLastNameLetter] = useState("")
+    const [namePlaceHolder, setNamePlaceHolder] = useState("")
 
-    console.log(currentPage)
+    useEffect(() => {
+        if (verifyLoginData?.firstName && verifyLoginData?.lastName) {
+            setFirstName(verifyLoginData?.firstName)
+            setLastName(verifyLoginData?.lastName)
+            setFirstNameLetter(firstName.slice(0, 1).toUpperCase())
+            setLastNameLetter(lastName?.slice(0, 1).toUpperCase())
+            setNamePlaceHolder(firstNameLetter + lastNameLetter)
+        }
+    }, [firstName, firstNameLetter, lastName, lastNameLetter, namePlaceHolder, verifyLoginData])
 
     const navigation = [
         { name: 'Students', href: '/students', icon: AcademicCapIcon, current: currentPage === "Students" ? true : false },
@@ -35,7 +50,7 @@ const Dashboard = ({ currentPage }) => {
         { name: 'Sign out' },
     ]
 
-    function classNames(...classes) {
+    function classNames(...classes: any[]) {
         return classes.filter(Boolean).join(' ')
     }
 
@@ -90,11 +105,7 @@ const Dashboard = ({ currentPage }) => {
                                         </div>
                                     </Transition.Child>
                                     <div className="flex items-center flex-shrink-0 px-4">
-                                        <img
-                                            className="w-auto h-8"
-                                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
-                                            alt="Your Company"
-                                        />
+                                        <h1 className="text-3xl font-bold tracking-tight text-white">DoCurator</h1>
                                     </div>
                                     <div className="flex-1 h-0 mt-5 overflow-y-auto cursor-pointer">
                                         <nav className="px-2 space-y-1 cursor-pointer">
@@ -165,14 +176,6 @@ const Dashboard = ({ currentPage }) => {
                                 </form>
                             </div>
                             <div className="flex items-center ml-4 md:ml-6">
-                                <button
-                                    type="button"
-                                    className="p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                >
-                                    <span className="sr-only">View notifications</span>
-                                    <BellIcon className="w-6 h-6" aria-hidden="true" />
-                                </button>
-
                                 {/* Profile dropdown */}
                                 <Menu as="div" className="relative ml-3">
                                     <div>
@@ -180,9 +183,12 @@ const Dashboard = ({ currentPage }) => {
                                             <span className="sr-only">Open user menu</span>
                                             <img
                                                 className="w-8 h-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                src={`https://placehold.jp/24/6366f1/ffffff/50x50.png?text=${namePlaceHolder}`}
                                                 alt=""
                                             />
+                                            <span className='px-2 font-semibold sm:text-xl'>
+                                                {firstName + " " + lastName}
+                                            </span>
                                         </Menu.Button>
                                     </div>
                                     <Transition
@@ -199,12 +205,11 @@ const Dashboard = ({ currentPage }) => {
                                                 <Menu.Item key={item.name}>
                                                     {({ active }) => (
                                                         <a
-                                                            href={item.href}
                                                             className={classNames(
                                                                 active ? 'bg-gray-100' : '',
                                                                 'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
                                                             )}
-                                                            onClick={item.name === 'Sign out' ? () => { Cookies.remove('l_auth'); router.push('/') } : null}
+                                                            onClick={() => { Cookies.remove('l_auth'); router.push('/') }}
                                                         >
                                                             {item.name}
                                                         </a>
@@ -214,6 +219,7 @@ const Dashboard = ({ currentPage }) => {
                                         </Menu.Items>
                                     </Transition>
                                 </Menu>
+
                             </div>
                         </div>
                     </div>
