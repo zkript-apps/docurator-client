@@ -16,6 +16,7 @@ import StudentList from './Table/Students/studentList'
 import BirthCertificatesList from './Table/BirthCertificate/birthCertificateList';
 import Form137List from './Table/Form137/form137List';
 import useAuth from '../hooks/useAuth';
+import SchoolsList from './Table/Schools/schoolList';
 
 
 const Dashboard = ({ currentPage }) => {
@@ -236,6 +237,7 @@ const Dashboard = ({ currentPage }) => {
                             {currentPage === "Students" ? <StudentList /> : null}
                             {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
                             {currentPage === "Form 137" ? <Form137List /> : null}
+                            {currentPage === "Schools" ? <SchoolsList /> : null}
                         </div>
                     </main>
                 </div>
