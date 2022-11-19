@@ -1,5 +1,4 @@
 
-
 export const BIRTH_CERTIFICATE_COLUMNS = [
     {
         Header: "lrn",

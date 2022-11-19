@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 
-const Login: NextPage = () => {
+const Index = () => {
   const router = useRouter();
   const inputElement = useRef(null);
 
@@ -25,7 +25,7 @@ const Login: NextPage = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    triggerAuthenticateUser({ email: email, password });
+    triggerAuthenticateUser({ email, password });
   };
 
   return (
@@ -44,9 +44,7 @@ const Login: NextPage = () => {
               <h1 className="text-6xl font-bold tracking-tight text-indigo-500">DoCurator</h1>
               <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
             </div>
-
             <div className="mt-8">
-
               <div className="mt-6">
                 <form onSubmit={_submitHandler} className="space-y-6">
                   <div>
@@ -131,4 +129,4 @@ const Login: NextPage = () => {
   )
 }
 
-export default Login
+export default Index
