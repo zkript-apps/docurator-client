@@ -13,8 +13,9 @@ import {
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
 import StudentList from './Table/Students/studentList'
-import BirthCertificatesList from './Table/BirthCertificate/birthCertificateList';
+import BirthCertificatesList from './Table/BirthCertificates/birthCertificatesList';
 import Form137List from './Table/Form137/form137List';
+import GoodMoralCertificatesList from './Table/GoodMoralCertificates/goodMoralCertificatesList';
 
 
 const Dashboard = ({ currentPage }) => {
@@ -222,6 +223,7 @@ const Dashboard = ({ currentPage }) => {
                             {currentPage === "Students" ? <StudentList /> : null}
                             {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
                             {currentPage === "Form 137" ? <Form137List /> : null}
+                            {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
                         </div>
                     </main>
                 </div>

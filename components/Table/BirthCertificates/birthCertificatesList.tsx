@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "../Table";
 import useBirthCertificates from "../../../hooks/useBirthCertificates";
 import useAuth from "../../../hooks/useAuth";
-import { BIRTH_CERTIFICATE_COLUMNS } from "./birthCertificateColumns";
+import { BIRTH_CERTIFICATE_COLUMNS } from "./birthCertificatesColumns";
 
 const BirthCertificatesList = () => {
     const { verifyLoginData } = useAuth();
