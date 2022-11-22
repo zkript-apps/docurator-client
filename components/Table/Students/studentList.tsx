@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Table from "../Table";
-import useStudents from "../../../hooks/useStudents";
+import { Table } from "../Table";
+import useClaimAccess from "../../../hooks/useClaimAccess";
 import useAuth from "../../../hooks/useAuth";
 import { STUDENT_COLUMNS } from "./studentColumns";
 
 const StudentList = () => {
     const { verifyLoginData } = useAuth();
     const [students, setStudents] = useState([]);
-    const { studentsData, refetchStudents } = useStudents();
+    const { claimAccessData, refetchClaimAccess } = useClaimAccess()
 
     useEffect(() => {
         if (verifyLoginData) {
-            setStudents(studentsData)
+            setStudents(claimAccessData)
         }
-    }, [verifyLoginData, students, studentsData, refetchStudents]);
+    }, [verifyLoginData, students, claimAccessData, refetchClaimAccess]);
 
     return (
         <>
