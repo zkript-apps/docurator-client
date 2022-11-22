@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "../Table";
+import Table from "../Table";
 import useGoodMoralCertificates from "../../../hooks/useGoodMoralCertificates"
 import useAuth from "../../../hooks/useAuth";
 import { GOOD_MORAL_CERTIFICATES_COLUMNS } from "./goodMoralCertificatesColumns";
