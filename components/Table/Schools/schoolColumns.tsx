@@ -1,20 +1,8 @@
-import { format } from "date-fns";
 
-export const STUDENT_COLUMNS = [
+export const SCHOOLS_COLUMNS = [
     {
-        Header: "First Name",
-        accessor: "userId.firstName",
-        Cell: ({ value }) => {
-            if (value) {
-                return value
-            } else {
-                return "..."
-            }
-        },
-    },
-    {
-        Header: "Last Name",
-        accessor: "userId.lastName",
+        Header: "School Name",
+        accessor: "schoolName",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -35,15 +23,14 @@ export const STUDENT_COLUMNS = [
         },
     },
     {
-        Header: "Date of Birth (dd/mm/yyyy)",
-        accessor: "dateOfBirth",
+        Header: "Mobile Number",
+        accessor: "phoneNumber",
         Cell: ({ value }) => {
             if (value) {
-                return format(new Date(value), "dd/MM/yyyy");
+                return value
             } else {
                 return "..."
             }
-
         },
     },
 ];

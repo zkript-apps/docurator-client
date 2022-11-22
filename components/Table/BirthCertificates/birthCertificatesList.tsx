@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "../Table";
+import Table from "../Table";
 import useBirthCertificates from "../../../hooks/useBirthCertificates";
 import useAuth from "../../../hooks/useAuth";
 import { BIRTH_CERTIFICATE_COLUMNS } from "./birthCertificatesColumns";

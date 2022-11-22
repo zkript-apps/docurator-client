@@ -1,9 +1,9 @@
 import { useMutation, useQuery } from "react-query";
-import { verifyAuth, authenticateUser, addUser } from "../utils/api/user";
+import { verifyAuth, authenticateUser } from "../utils/api/user";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { STALE_TIME } from "../utils/constants";
 
 const useAuth = () => {
@@ -20,7 +20,7 @@ const useAuth = () => {
     },
     {
       onError: (data) => {
-        if (router.pathname !== "/" && router.pathname !== "/create") {
+        if (router.pathname !== "/") {
           toast.error(data, {
             id: "authenticateUser",
             duration: 3000,
@@ -35,33 +35,30 @@ const useAuth = () => {
   const {
     mutate: triggerAuthenticateUser,
     isLoading: isAuthenticateUserLoading,
-  } = useMutation(async (data) => await authenticateUser(data), {
+  } = useMutation(async (data: any) => await authenticateUser(data), {
     onSuccess: (data) => {
       Cookies.set("l_auth", data.token);
-      toast.success("You are now authenticated", {
-        id: "authenticateUser",
-        duration: 3000,
-      });
       if (router.pathname === "/" && data.userType === "Admin") {
+        toast.success("You are now authenticated", {
+          id: "authenticateUser",
+          duration: 3000,
+        });
         router.push("/students");
       } else {
+        toast.error("You are not authorized to do that action", {
+          id: "authenticateUserError",
+          duration: 3000,
+        });
         router.push("/");
       }
     },
-    onError: (err) => {
+    onError: (err: any) => {
       toast.error(err, {
         id: "authenticateUser",
         duration: 5000,
       });
     },
   });
-  useEffect(() => {
-    if (isAuthenticateUserLoading) {
-      toast.loading("Logging in...", {
-        id: "authenticateUser",
-      });
-    }
-  }, [isAuthenticateUserLoading]);
   useEffect(() => {
     if (router.pathname !== "/" && router.pathname !== "/create") {
       refetchVerifyLogin();

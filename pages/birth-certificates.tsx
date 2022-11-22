@@ -1,26 +1,9 @@
-import Cookies from "js-cookie"
-import { useRouter } from "next/router"
-import { useEffect } from "react"
-import toast from "react-hot-toast"
 import Dashboard from "../components/Dashboard"
 
 const BirthCertificates = () => {
-    const authCookie = Cookies.get('l_auth')
-    const router = useRouter();
-    if (authCookie) {
-        return (
-            <Dashboard currentPage={"Birth Certificates"} />
-        )
-    } else {
-        useEffect(() => {
-            router.push('/')
-            toast.error("You are not authorized", {
-                id: "noAuth",
-                duration: 3000
-            });
-        })
-    }
-
+    return (
+        <Dashboard currentPage={"Birth Certificates"} />
+    )
 }
 
 export default BirthCertificates
