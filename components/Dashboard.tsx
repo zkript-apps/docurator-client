@@ -15,7 +15,7 @@ import StudentList from './Table/Students/studentList'
 import BirthCertificatesList from './Table/BirthCertificate/birthCertificateList';
 import Form137List from './Table/Form137/form137List';
 import useAuth from '../hooks/useAuth';
-
+import SchoolsList from './Table/Schools/schoolList';
 
 const Dashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
@@ -104,7 +104,11 @@ const Dashboard = ({ currentPage }: any) => {
                                         </div>
                                     </Transition.Child>
                                     <div className="flex items-center flex-shrink-0 px-4">
-                                        <h1 className="text-3xl font-bold tracking-tight text-white">DoCurator</h1>
+                                        <img
+                                            className="w-auto h-8"
+                                            src={`https://placehold.jp/24/6366f1/ffffff/50x50.png?text=${namePlaceHolder}`}
+                                            alt="Your Company"
+                                        />
                                     </div>
                                     <div className="flex-1 h-0 mt-5 overflow-y-auto cursor-pointer">
                                         <nav className="px-2 space-y-1 cursor-pointer">
@@ -227,6 +231,7 @@ const Dashboard = ({ currentPage }: any) => {
                             {currentPage === "Students" ? <StudentList /> : null}
                             {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
                             {currentPage === "Form 137" ? <Form137List /> : null}
+                            {currentPage === "Schools" ? <SchoolsList /> : null}
                         </div>
                     </main>
                 </div>
