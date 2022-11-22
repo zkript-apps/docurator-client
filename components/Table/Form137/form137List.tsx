@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "../Table";
+import Table from "../Table";
 import useForm137 from "../../../hooks/useForm137";
 import useAuth from "../../../hooks/useAuth";
 import { FORM137_COLUMNS } from "./form137Columns";
