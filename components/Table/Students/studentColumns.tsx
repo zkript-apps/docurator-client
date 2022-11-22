@@ -36,7 +36,7 @@ export const STUDENT_COLUMNS = [
     },
     {
         Header: "Date of Birth (dd/mm/yyyy)",
-        accessor: "studentId.userId.dateOfBirth",
+        accessor: "studentId.dateOfBirth",
         Cell: ({ value }) => {
             if (value) {
                 return format(new Date(value), "dd/MM/yyyy");
