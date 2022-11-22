@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "../Table";
+import Table from "../Table";
 import useSchools from "../../../hooks/useSchools";
 import useAuth from "../../../hooks/useAuth";
 import { SCHOOLS_COLUMNS } from "./schoolColumns";
