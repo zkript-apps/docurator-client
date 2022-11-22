@@ -1,7 +1,8 @@
+import { Row } from "react-bootstrap";
 
-export const FORM137_COLUMNS = [
+export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
-        Header: "LRN",
+        Header: "lrn",
         accessor: "lrn",
         Cell: ({ value }) => {
             if (value) {
@@ -12,8 +13,8 @@ export const FORM137_COLUMNS = [
         },
     },
     {
-        Header: "Status of Applicant",
-        accessor: "studentId.statusOfApplicant",
+        Header: "Last Name",
+        accessor: "lastName",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -23,19 +24,8 @@ export const FORM137_COLUMNS = [
         },
     },
     {
-        Header: "Email",
-        accessor: "studentId.email",
-        Cell: ({ value }) => {
-            if (value) {
-                return value
-            } else {
-                return "..."
-            }
-        },
-    },
-    {
-        Header: "Mobile Number",
-        accessor: "studentId.phoneNumber",
+        Header: "First Name",
+        accessor: "firstName",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -46,7 +36,7 @@ export const FORM137_COLUMNS = [
     },
     {
         Header: "School Name",
-        accessor: "studentId.schoolName",
+        accessor: "schoolName",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -56,5 +46,40 @@ export const FORM137_COLUMNS = [
 
         },
     },
+    {
+        Header: "Signed by",
+        accessor: "signedBy",
+        Cell: ({ value }) => {
+            if (value) {
+                return value
+            } else {
+                return "..."
+            }
 
+        },
+    },
+    {
+        Header: "Signee Position",
+        accessor: "position",
+        Cell: ({ value }) => {
+            if (value) {
+                return value
+            } else {
+                return "..."
+            }
+
+        },
+    },
+    {
+        Header: "School Year",
+        accessor: "academicYear",
+        Cell: ({ value }) => {
+            if (value) {
+                return value.from + " - " + value.to
+            } else {
+                return "..."
+            }
+
+        },
+    },
 ];

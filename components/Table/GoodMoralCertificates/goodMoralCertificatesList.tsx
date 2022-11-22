@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "../Table";
-import useBirthCertificates from "../../../hooks/useBirthCertificates";
+import useGoodMoralCertificates from "../../../hooks/useGoodMoralCertificates"
 import useAuth from "../../../hooks/useAuth";
-import { BIRTH_CERTIFICATE_COLUMNS } from "./birthCertificateColumns";
+import { GOOD_MORAL_CERTIFICATES_COLUMNS } from "./goodMoralCertificatesColumns";
 
-const BirthCertificatesList = () => {
+const GoodMoralCertificatesList = () => {
     const { verifyLoginData } = useAuth();
-    const [birthCertificates, setBirthCertificates] = useState([]);
-    const { birthCertificatesData, refetchBirthCertificates } = useBirthCertificates();
+    const [goodMoralCertificates, setGoodMoralCertificates] = useState([]);
+    const { goodMoralCertificatesData, refetchGoodMoralCertificates } = useGoodMoralCertificates();
 
     useEffect(() => {
         if (verifyLoginData) {
-            setBirthCertificates(birthCertificatesData)
+            setGoodMoralCertificates(goodMoralCertificatesData)
         }
-    }, [birthCertificatesData, verifyLoginData, refetchBirthCertificates]);
+    }, [goodMoralCertificatesData, verifyLoginData, refetchGoodMoralCertificates]);
 
     return (
         <>
@@ -25,7 +25,7 @@ const BirthCertificatesList = () => {
             <div className="mt-3">
                 <div className="max-w-6xl mx-auto lg:px-8">
                     <div className="flex flex-col">
-                        <Table tableData={birthCertificates} tableColumns={BIRTH_CERTIFICATE_COLUMNS} />
+                        <Table tableData={goodMoralCertificates} tableColumns={GOOD_MORAL_CERTIFICATES_COLUMNS} />
                     </div>
                 </div>
             </div>
@@ -33,4 +33,4 @@ const BirthCertificatesList = () => {
     );
 };
 
-export default BirthCertificatesList;
+export default GoodMoralCertificatesList;

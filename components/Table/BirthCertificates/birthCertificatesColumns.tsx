@@ -1,19 +1,8 @@
 
-export const FORM137_COLUMNS = [
+export const BIRTH_CERTIFICATE_COLUMNS = [
     {
-        Header: "LRN",
-        accessor: "lrn",
-        Cell: ({ value }) => {
-            if (value) {
-                return value
-            } else {
-                return "..."
-            }
-        },
-    },
-    {
-        Header: "Status of Applicant",
-        accessor: "studentId.statusOfApplicant",
+        Header: "lrn",
+        accessor: "studentId.lrn",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -56,5 +45,4 @@ export const FORM137_COLUMNS = [
 
         },
     },
-
 ];
