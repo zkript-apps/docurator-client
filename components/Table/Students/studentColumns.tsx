@@ -3,7 +3,7 @@ import { format } from "date-fns";
 export const STUDENT_COLUMNS = [
     {
         Header: "First Name",
-        accessor: "userId.firstName",
+        accessor: "studentId.userId.firstName",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -14,7 +14,7 @@ export const STUDENT_COLUMNS = [
     },
     {
         Header: "Last Name",
-        accessor: "userId.lastName",
+        accessor: "studentId.userId.lastName",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -25,7 +25,7 @@ export const STUDENT_COLUMNS = [
     },
     {
         Header: "Email",
-        accessor: "email",
+        accessor: "studentId.userId.email",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -36,7 +36,7 @@ export const STUDENT_COLUMNS = [
     },
     {
         Header: "Date of Birth (dd/mm/yyyy)",
-        accessor: "dateOfBirth",
+        accessor: "studentId.userId.dateOfBirth",
         Cell: ({ value }) => {
             if (value) {
                 return format(new Date(value), "dd/MM/yyyy");
