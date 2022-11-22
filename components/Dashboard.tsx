@@ -2,7 +2,6 @@ import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
     Bars3BottomLeftIcon,
-    BellIcon,
     DocumentTextIcon,
     XMarkIcon,
     CodeBracketIcon,
@@ -18,23 +17,23 @@ import Form137List from './Table/Form137/form137List';
 import useAuth from '../hooks/useAuth';
 import SchoolsList from './Table/Schools/schoolList';
 
-
-const Dashboard = ({ currentPage }) => {
+const Dashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
+    const [firstNameLetter, setFirstNameLetter] = useState("")
+    const [lastNameLetter, setLastNameLetter] = useState("")
     const [namePlaceHolder, setNamePlaceHolder] = useState("")
 
     useEffect(() => {
         if (verifyLoginData?.firstName && verifyLoginData?.lastName) {
-            setFirstName(verifyLoginData?.firstName?.slice(0, 1).toUpperCase())
-            setLastName(verifyLoginData?.lastName?.slice(0, 1).toUpperCase())
-            setNamePlaceHolder(firstName + lastName)
+            setFirstName(verifyLoginData?.firstName)
+            setLastName(verifyLoginData?.lastName)
+            setFirstNameLetter(firstName.slice(0, 1).toUpperCase())
+            setLastNameLetter(lastName?.slice(0, 1).toUpperCase())
+            setNamePlaceHolder(firstNameLetter + lastNameLetter)
         }
-    }, [firstName, lastName, namePlaceHolder, verifyLoginData])
-
-
-
+    }, [firstName, firstNameLetter, lastName, lastNameLetter, namePlaceHolder, verifyLoginData])
 
     const navigation = [
         { name: 'Students', href: '/students', icon: AcademicCapIcon, current: currentPage === "Students" ? true : false },
@@ -50,7 +49,7 @@ const Dashboard = ({ currentPage }) => {
         { name: 'Sign out' },
     ]
 
-    function classNames(...classes) {
+    function classNames(...classes: any[]) {
         return classes.filter(Boolean).join(' ')
     }
 
@@ -180,14 +179,6 @@ const Dashboard = ({ currentPage }) => {
                                 </form>
                             </div>
                             <div className="flex items-center ml-4 md:ml-6">
-                                <button
-                                    type="button"
-                                    className="p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                >
-                                    <span className="sr-only">View notifications</span>
-                                    <BellIcon className="w-6 h-6" aria-hidden="true" />
-                                </button>
-
                                 {/* Profile dropdown */}
                                 <Menu as="div" className="relative ml-3">
                                     <div>
@@ -198,6 +189,9 @@ const Dashboard = ({ currentPage }) => {
                                                 src={`https://placehold.jp/24/6366f1/ffffff/50x50.png?text=${namePlaceHolder}`}
                                                 alt=""
                                             />
+                                            <span className='px-2 font-semibold sm:text-xl'>
+                                                {firstName + " " + lastName}
+                                            </span>
                                         </Menu.Button>
                                     </div>
                                     <Transition
@@ -214,12 +208,11 @@ const Dashboard = ({ currentPage }) => {
                                                 <Menu.Item key={item.name}>
                                                     {({ active }) => (
                                                         <a
-                                                            href={item.href}
                                                             className={classNames(
                                                                 active ? 'bg-gray-100' : '',
                                                                 'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
                                                             )}
-                                                            onClick={item.name === 'Sign out' ? () => { Cookies.remove('l_auth'); router.push('/') } : null}
+                                                            onClick={() => { Cookies.remove('l_auth'); router.push('/') }}
                                                         >
                                                             {item.name}
                                                         </a>
@@ -229,6 +222,7 @@ const Dashboard = ({ currentPage }) => {
                                         </Menu.Items>
                                     </Transition>
                                 </Menu>
+
                             </div>
                         </div>
                     </div>

@@ -46,5 +46,4 @@ export const STUDENT_COLUMNS = [
 
         },
     },
-
 ];

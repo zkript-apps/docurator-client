@@ -5,7 +5,7 @@ import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ArrowDownIcon, ArrowUpIc
 import { GlobalFilter } from "./GlobalFilter";
 
 
-export const Table = ({ tableData, tableColumns }) => {
+const Table = ({ tableData, tableColumns }) => {
   const [newTableData, setNewTableData] = useState([])
   const [newTableColumns, setNewTableColumns] = useState([])
 
@@ -128,3 +128,4 @@ export const Table = ({ tableData, tableColumns }) => {
     </>
   );
 };
+export default Table

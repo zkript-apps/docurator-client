@@ -1,9 +1,9 @@
 import { useMutation, useQuery } from "react-query";
-import { verifyAuth, authenticateUser, addUser } from "../utils/api/user";
+import { verifyAuth, authenticateUser } from "../utils/api/user";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { STALE_TIME } from "../utils/constants";
 
 const useAuth = () => {
@@ -35,7 +35,7 @@ const useAuth = () => {
   const {
     mutate: triggerAuthenticateUser,
     isLoading: isAuthenticateUserLoading,
-  } = useMutation(async (data) => await authenticateUser(data), {
+  } = useMutation(async (data: any) => await authenticateUser(data), {
     onSuccess: (data) => {
       Cookies.set("l_auth", data.token);
       if (router.pathname === "/" && data.userType === "Admin") {
@@ -52,7 +52,7 @@ const useAuth = () => {
         router.push("/");
       }
     },
-    onError: (err) => {
+    onError: (err: any) => {
       toast.error(err, {
         id: "authenticateUser",
         duration: 5000,
