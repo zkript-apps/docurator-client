@@ -105,11 +105,7 @@ const Dashboard = ({ currentPage }: any) => {
                                         </div>
                                     </Transition.Child>
                                     <div className="flex items-center flex-shrink-0 px-4">
-                                        <img
-                                            className="w-auto h-8"
-                                            src={`https://placehold.jp/24/6366f1/ffffff/50x50.png?text=${namePlaceHolder}`}
-                                            alt="Your Company"
-                                        />
+                                        <h1 className="text-3xl font-bold tracking-tight text-white">DoCurator</h1>
                                     </div>
                                     <div className="flex-1 h-0 mt-5 overflow-y-auto cursor-pointer">
                                         <nav className="px-2 space-y-1 cursor-pointer">
