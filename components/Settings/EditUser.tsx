@@ -11,6 +11,7 @@ const EditUser = ({ isEditUserActive }) => {
     const [middleName, setMiddleName] = useState("")
     const [email, setEmail] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
+    const [isEditUserSuccess, setIsEditUserSuccess] = useState(false)
 
     useEffect(() => {
         setLastName(verifyLoginData?.lastName)
@@ -28,6 +29,7 @@ const EditUser = ({ isEditUserActive }) => {
 
 
     const _submitHandler = (e) => {
+        e.preventDefault()
         const inputLastName = e.target.lastName.value;
         const inputFirstName = e.target.firstName.value;
         const inputMiddleName = e.target.middleName.value;
@@ -52,7 +54,7 @@ const EditUser = ({ isEditUserActive }) => {
                     middleName: inputMiddleName,
                     email: inputEmail,
                     phoneNumber: inputPhoneNumber
-                }, verifyLoginData._id], { onSuccess: refetchVerifyLogin }
+                }, verifyLoginData._id], { onSuccess: () => { refetchVerifyLogin; setIsEditUserSuccess(true) } }
                 )
             }
         }
@@ -139,18 +141,19 @@ const EditUser = ({ isEditUserActive }) => {
                 </div>
                 <div className='flex justify-end max-w-2xl mt-3'>
                     <button
-                        onClick={() => setIsEditUserActive(false)}
+                        onClick={() => { setIsEditUserActive(false); setIsEditUserSuccess(false) }}
                         type="button"
                         className="inline-flex items-center px-3 py-2 mr-2 text-sm font-medium leading-4 text-white bg-gray-500 border border-transparent rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2"
                     >
-                        Cancel
+                        {isEditUserSuccess ? 'Back' : 'Cancel'}
                     </button>
-                    <button
+                    {isEditUserSuccess ? null : <button
                         type="submit"
                         className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2"
                     >
                         Confirm
-                    </button>
+                    </button>}
+
                 </div>
             </form >
         </>

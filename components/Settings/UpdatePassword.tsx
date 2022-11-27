@@ -9,17 +9,19 @@ const UpdatePassword = ({ isChangePasswordActive }) => {
     const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false)
     const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
+    const [isChangePasswordSuccess, setIsChangePasswordSuccess] = useState(false)
     const { triggerUpdateUserPassword } = useUser()
 
 
     const _submitHandler = (e) => {
+        e.preventDefault();
         const oldPassword = e.target.oldPassword.value;
         const newPassword = e.target.newPassword.value;
         const confirmPassword = e.target.confirmPassword.value;
         if (oldPassword && newPassword && confirmPassword) {
             if (newPassword === confirmPassword) {
                 triggerUpdateUserPassword([{ oldPassword, newPassword }, verifyLoginData._id],
-                    { onSuccess: () => document?.getElementById("changePasswordForm")?.reset() })
+                    { onSuccess: () => { document?.getElementById("changePasswordForm")?.reset(); setIsChangePasswordSuccess(true) } })
             } else {
                 toast.error("New passwords does not match", {
                     id: "settings",
@@ -125,18 +127,18 @@ const UpdatePassword = ({ isChangePasswordActive }) => {
                 </div>
                 <div className='flex justify-end max-w-2xl mt-3'>
                     <button
-                        onClick={() => setIsChangePasswordActive(false)}
+                        onClick={() => { setIsChangePasswordActive(false); setIsChangePasswordSuccess(false) }}
                         type="button"
                         className="inline-flex items-center px-3 py-2 mr-2 text-sm font-medium leading-4 text-white bg-gray-500 border border-transparent rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2"
                     >
-                        Cancel
+                        {isChangePasswordSuccess ? 'Back' : 'Cancel'}
                     </button>
-                    <button
+                    {isChangePasswordSuccess ? null : <button
                         type="submit"
                         className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2"
                     >
                         Confirm
-                    </button>
+                    </button>}
                 </div>
             </form>
         </>
