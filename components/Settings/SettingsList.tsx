@@ -48,12 +48,20 @@ const SettingsList = () => {
     return (
         <>
             {isEditUserActive ?
-                <EditUser
-                    isEditUserActive={editUserProps}
-                />
-                :
-                <DisplayUser isChangePasswordActive={changePasswordProps} isEditUserActive={editUserProps} fullName={fullName} email={email} phoneNumber={phoneNumber} />
+                <EditUser isEditUserActive={editUserProps} /> : null
             }
+            {isChangePasswordActive ?
+                <UpdatePassword isChangePasswordActive={changePasswordProps} /> : null
+            }
+            {!isEditUserActive && !isChangePasswordActive ?
+                <DisplayUser
+                    isChangePasswordActive={changePasswordProps}
+                    isEditUserActive={editUserProps}
+                    fullName={fullName}
+                    email={email}
+                    phoneNumber={phoneNumber} />
+                :
+                null}
         </>
     )
 }

@@ -19,7 +19,6 @@ const EditUser = ({ isEditUserActive }) => {
         setEmail(verifyLoginData?.email)
         setPhoneNumber(verifyLoginData?.phoneNumber)
     }, [
-        isUpdateUserLoading,
         verifyLoginData?.email,
         verifyLoginData?.firstName,
         verifyLoginData?.lastName,
@@ -29,20 +28,33 @@ const EditUser = ({ isEditUserActive }) => {
 
 
     const _submitHandler = (e) => {
-        const lastName = e.target.lastName.value;
-        const firstName = e.target.firstName.value;
-        const middleName = e.target.middleName.value;
-        const email = e.target.email.value;
-        const phoneNumber = e.target.phoneNumber.value;
-        if (lastName && firstName && email && phoneNumber) {
-            triggerUpdateUser([{
-                lastName,
-                firstName,
-                middleName,
-                email,
-                phoneNumber
-            }, verifyLoginData._id], { onSuccess: refetchVerifyLogin }
-            )
+        const inputLastName = e.target.lastName.value;
+        const inputFirstName = e.target.firstName.value;
+        const inputMiddleName = e.target.middleName.value;
+        const inputEmail = e.target.email.value;
+        const inputPhoneNumber = e.target.phoneNumber.value;
+        if (inputLastName && inputFirstName && inputEmail && inputPhoneNumber) {
+            if (
+                inputLastName === lastName &&
+                inputFirstName === firstName &&
+                inputMiddleName === middleName &&
+                inputEmail === email &&
+                inputPhoneNumber === phoneNumber
+            ) {
+                toast.error("No changes has been made", {
+                    id: "editUser",
+                    duration: 3000
+                });
+            } else {
+                triggerUpdateUser([{
+                    lastName: inputLastName,
+                    firstName: inputFirstName,
+                    middleName: inputMiddleName,
+                    email: inputEmail,
+                    phoneNumber: inputPhoneNumber
+                }, verifyLoginData._id], { onSuccess: refetchVerifyLogin }
+                )
+            }
         }
     }
 
@@ -80,7 +92,7 @@ const EditUser = ({ isEditUserActive }) => {
                                     id="lastName"
                                     required
                                     className="w-full px-0 py-0 border-0 border-transparent focus:border-indigo-500 focus:ring-0 sm:text-sm"
-                                    defaultValue={isUpdateUserLoading ? '' : lastName}
+                                    defaultValue={lastName}
                                 />
                             </li>
                             <li className="px-6 py-4">

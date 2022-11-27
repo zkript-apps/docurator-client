@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import useAuth from '../../hooks/useAuth';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/20/solid'
 import toast from 'react-hot-toast';
@@ -9,11 +9,10 @@ const UpdatePassword = ({ isChangePasswordActive }) => {
     const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false)
     const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
-    const { triggerUpdateUserPassword, isUpdateUserPasswordLoading } = useUser()
+    const { triggerUpdateUserPassword } = useUser()
 
 
     const _submitHandler = (e) => {
-        e.preventDefault();
         const oldPassword = e.target.oldPassword.value;
         const newPassword = e.target.newPassword.value;
         const confirmPassword = e.target.confirmPassword.value;
@@ -39,7 +38,7 @@ const UpdatePassword = ({ isChangePasswordActive }) => {
             <form id="changePasswordForm" onSubmit={_submitHandler}>
                 <div className="max-w-2xl mt-16 bg-white border rounded-lg shadow ring-1 ring-black ring-opacity-5">
                     <div className='flex flex-row'>
-                        <ul role="list" className="divide-y divide-gray-200 w-64 bg-slate-100">
+                        <ul role="list" className="divide-y divide-gray-200 w-80 bg-slate-100">
                             <li className="px-6 py-4">
                                 Old Password
                             </li>
