@@ -1,9 +1,9 @@
+import Dashboard from "../components/Dashboard"
 
 const Settings = () => {
     return (
-        <h1 className="text-6xl font-bold tracking-tight text-indigo-500">Settings</h1>
+        <Dashboard currentPage='Settings' />
     )
-
 }
 
 export default Settings

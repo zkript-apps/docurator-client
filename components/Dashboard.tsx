@@ -17,6 +17,7 @@ import Form137List from './Table/Form137/form137List';
 import GoodMoralCertificatesList from './Table/GoodMoralCertificates/goodMoralCertificatesList';
 import useAuth from '../hooks/useAuth';
 import SchoolsList from './Table/Schools/schoolList';
+import Settings from './Settings/Settings';
 
 const Dashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
@@ -30,7 +31,7 @@ const Dashboard = ({ currentPage }: any) => {
         if (verifyLoginData?.firstName && verifyLoginData?.lastName) {
             setFirstName(verifyLoginData?.firstName)
             setLastName(verifyLoginData?.lastName)
-            setFirstNameLetter(firstName.slice(0, 1).toUpperCase())
+            setFirstNameLetter(firstName?.slice(0, 1).toUpperCase())
             setLastNameLetter(lastName?.slice(0, 1).toUpperCase())
             setNamePlaceHolder(firstNameLetter + lastNameLetter)
         }
@@ -230,6 +231,7 @@ const Dashboard = ({ currentPage }: any) => {
                             {currentPage === "Form 137" ? <Form137List /> : null}
                             {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
                             {currentPage === "Schools" ? <SchoolsList /> : null}
+                            {currentPage === "Settings" ? <Settings /> : null}
                         </div>
                     </main>
                 </div>
