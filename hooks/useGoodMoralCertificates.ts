@@ -1,13 +1,13 @@
 import { useQuery } from "react-query";
-import { getGoodMoralCertificates } from "../utils/api/goodMoralCertificates";
+import { getAllGoodMoralCertificatesWithAccess } from "../utils/api/goodMoralCertificates";
 
 const useGoodMoralCertificates = () => {
   const {
     data: goodMoralCertificatesData,
     isLoading: isGoodMoralCertificatesLoading,
     refetch: refetchGoodMoralCertificates,
-  } = useQuery("birth-certificates", async () => {
-    return await getGoodMoralCertificates();
+  } = useQuery("birth-certificates-with-access", async () => {
+    return await getAllGoodMoralCertificatesWithAccess();
   });
 
   return {

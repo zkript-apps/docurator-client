@@ -8,3 +8,5 @@ export const addForm137 = (body = null) =>
   apiCall(`${BASE}`, generateHeaders(), POST, body);
 export const updateForm137 = (body = null, id = "") =>
   apiCall(`${BASE}/${id}`, generateHeaders(), PATCH, body);
+export const getForm137WithAccess = (body = null) =>
+  apiCall(`${BASE}/with-access`, generateHeaders(), GET, body);
