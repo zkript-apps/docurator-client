@@ -55,12 +55,12 @@ const Signup: NextPage = () => {
             <div className="flex min-h-full">
                 <div className="relative flex-1 hidden w-0 lg:block">
                     <img
-                        className="absolute inset-0 object-cover w-full h-full"
+                        className="absolute inset-0 object-cover w-screen h-screen"
                         src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
                         alt=""
                     />
                 </div>
-                <div className="flex flex-col justify-center flex-1 h-screen sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+                <div className="flex flex-col justify-center flex-1 h-screen lg:flex-none lg:px-20 xl:px-24">
                     <div className="w-full max-w-sm mx-auto lg:w-96">
                         <div>
                             <h1 className="text-6xl font-bold tracking-tight text-indigo-500">DoCurator</h1>
@@ -70,7 +70,7 @@ const Signup: NextPage = () => {
                         <div className="mt-8">
 
                             <div className="mt-6">
-                                <form onSubmit={_submitHandler} className="space-y-6">
+                                <form onSubmit={_submitHandler} className="space-y-6 shrink">
 
                                     <div className="space-y-1">
                                         <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
