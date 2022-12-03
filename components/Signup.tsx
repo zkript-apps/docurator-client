@@ -11,10 +11,13 @@ const Signup: NextPage = () => {
     const { triggerAddUser, isAddUserLoading } = addUser();
     const [isPasswordVisible, setIsPasswordVisible] = useState(true)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(true)
+    const [isStudent, setIsStudent] = useState(false)
+
     useEffect(() => {
         if (inputElement.current) {
             inputElement.current.focus();
         }
+
     }, []);
 
     const _submitHandler = (e) => {
@@ -26,6 +29,7 @@ const Signup: NextPage = () => {
         const password = e.target.password.value;
         const phoneNumber = e.target.phoneNumber.value
         const confirmPassword = e.target.confirmPassword.value
+        const userType = e.target.userType.value;
 
         if (password === confirmPassword) {
             triggerAddUser({
@@ -34,7 +38,8 @@ const Signup: NextPage = () => {
                 middleName,
                 email,
                 password,
-                phoneNumber
+                phoneNumber,
+                userType
             })
         } else {
             toast.error("Passwords do not match", {
@@ -201,6 +206,18 @@ const Signup: NextPage = () => {
                                                         aria-hidden="true"
                                                     />
                                                 )}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div className="relative flex items-start">
+                                            <div className="flex items-center h-5">
+                                                <input id="userType" name="userType" onChange={() => setIsStudent(!isStudent)} value={isStudent ? 'Student' : 'Admin'} aria-describedby="comments-description" type="checkbox" className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" />
+                                            </div>
+                                            <div className="ml-3 text-sm">
+                                                <label htmlFor="isStudent" className="font-medium text-gray-700">I am a student</label>
+                                                <p id="isStudentDescription" className="text-gray-500">Check this if you are creating an account as a student.</p>
                                             </div>
                                         </div>
                                     </div>
