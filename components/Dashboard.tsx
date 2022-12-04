@@ -17,6 +17,7 @@ import Form137List from './Table/Form137/form137List';
 import GoodMoralCertificatesList from './Table/GoodMoralCertificates/goodMoralCertificatesList';
 import useAuth from '../hooks/useAuth';
 import SchoolsList from './Table/Schools/schoolList';
+import { MyForm137 } from './MyForm137';
 
 const Dashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
@@ -48,7 +49,7 @@ const Dashboard = ({ currentPage }: any) => {
     ]
     const studentNavigation = [
         { name: 'Schools', href: '/schools', icon: BuildingLibraryIcon, current: currentPage === "Schools" ? true : false },
-        { name: 'My Form 137', href: '/my-form137', icon: DocumentTextIcon, current: currentPage === "Form 137" ? true : false },
+        { name: 'My Form 137', href: '/my-form137', icon: DocumentTextIcon, current: currentPage === "My Form 137" ? true : false },
         { name: 'Form 138', href: '/form138', icon: DocumentTextIcon, current: currentPage === "Form 138" ? true : false },
         { name: 'Good Moral Certificate', href: '/good-moral-certificates', icon: DocumentTextIcon, current: currentPage === "Good Moral Certificates" ? true : false },
         { name: 'Birth Certificate', href: '/birth-certificates', icon: DocumentTextIcon, current: currentPage === "Birth Certificates" ? true : false },
@@ -266,7 +267,9 @@ const Dashboard = ({ currentPage }: any) => {
                                 {currentPage === "Form 137" ? <Form137List /> : null}
                                 {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
                                 {currentPage === "Schools" ? <SchoolsList /> : null}
-                            </div> : null
+                            </div> : <div className="py-6">
+                                {currentPage === "My Form 137" ? <MyForm137 /> : null}
+                            </div>
                         }
                     </main>
                 </div>

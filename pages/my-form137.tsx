@@ -1,10 +1,9 @@
+import Dashboard from "../components/Dashboard"
 
 
 const good_moral_certificates = () => {
     return (
-        <h2 className="text-2xl ">
-            My Form 137
-        </h2>
+        <Dashboard currentPage={"My Form 137"} />
     )
 }
 
