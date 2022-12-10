@@ -9,3 +9,5 @@ export const addGoodMoralCertificates = (body = null) =>
   apiCall(`${BASE}`, generateHeaders(), POST, body);
 export const updateGoodMoralCertificates = (body = null, id = "") =>
   apiCall(`${BASE}/${id}`, generateHeaders(), PATCH, body);
+export const getAllGoodMoralCertificatesWithAccess = (body = null, id = "") =>
+  apiCall(`${BASE}/with-access`, generateHeaders(), GET, body);

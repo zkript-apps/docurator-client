@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import addUser from "../hooks/addUser";
+import useUser from "../hooks/useUser";
 import { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
@@ -8,7 +8,7 @@ import { EyeIcon, EyeSlashIcon } from '@heroicons/react/20/solid'
 const Signup: NextPage = () => {
     const router = useRouter();
     const inputElement = useRef(null);
-    const { triggerAddUser, isAddUserLoading } = addUser();
+    const { triggerAddUser, isAddUserLoading } = useUser();
     const [isPasswordVisible, setIsPasswordVisible] = useState(true)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(true)
     useEffect(() => {
@@ -45,6 +45,7 @@ const Signup: NextPage = () => {
             passwordField?.focus()
         }
     }
+
     return (
         <>
             <div className="flex min-h-full">
@@ -100,7 +101,6 @@ const Signup: NextPage = () => {
                                                 type="middleName"
                                                 disabled={isAddUserLoading}
                                                 placeholder={'Middle Name'}
-                                                required
                                                 className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                             />
                                         </div>
@@ -215,7 +215,7 @@ const Signup: NextPage = () => {
                                     </div>
                                     <div className='py-8'>
                                         <label>
-                                            Already have an account? <a onClick={() => router.push('/')} className="font-medium text-indigo-500 cursor-pointer hover:text-indigo-500">
+                                            Already have an account? <a onClick={() => router.push('/')} className="font-medium text-indigo-500 cursor-pointer hover:text-indigo-700">
                                                 Sign in here
                                             </a>
                                         </label>

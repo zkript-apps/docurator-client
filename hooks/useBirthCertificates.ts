@@ -1,13 +1,13 @@
 import { useQuery } from "react-query";
-import { getBirthCertificates } from "../utils/api/birthCertificates";
+import { getBirthCertificatesWithAccess } from "../utils/api/birthCertificates";
 
 const useBirthCertificates = () => {
   const {
     data: birthCertificatesData,
     isLoading: isBirthCertificateLoading,
     refetch: refetchBirthCertificates,
-  } = useQuery("birth-certificates", async () => {
-    return await getBirthCertificates();
+  } = useQuery("birth-certificates-with-access", async () => {
+    return await getBirthCertificatesWithAccess();
   });
 
   return {

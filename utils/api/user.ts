@@ -12,4 +12,4 @@ export const authenticateUser = (body = null) =>
 export const updateUser = (body = null, id = "") =>
   apiCall(`${BASE}/${id}`, generateHeaders(), PATCH, body);
 export const updateUserPassword = (body = null, id = "") =>
-  apiCall(`${BASE}/updatePassword/${id}`, generateHeaders(), PUT, body);
+  apiCall(`${BASE}/change-password/${id}`, generateHeaders(), PATCH, body);
