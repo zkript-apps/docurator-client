@@ -11,10 +11,13 @@ const Signup: NextPage = () => {
     const { triggerAddUser, isAddUserLoading } = useUser();
     const [isPasswordVisible, setIsPasswordVisible] = useState(true)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(true)
+    const [isStudent, setIsStudent] = useState(false)
+
     useEffect(() => {
         if (inputElement.current) {
             inputElement.current.focus();
         }
+
     }, []);
 
     const _submitHandler = (e) => {
@@ -26,6 +29,7 @@ const Signup: NextPage = () => {
         const password = e.target.password.value;
         const phoneNumber = e.target.phoneNumber.value
         const confirmPassword = e.target.confirmPassword.value
+        const userType = e.target.userType.value;
 
         if (password === confirmPassword) {
             triggerAddUser({
@@ -34,7 +38,8 @@ const Signup: NextPage = () => {
                 middleName,
                 email,
                 password,
-                phoneNumber
+                phoneNumber,
+                userType
             })
         } else {
             toast.error("Passwords do not match", {
@@ -51,12 +56,12 @@ const Signup: NextPage = () => {
             <div className="flex min-h-full">
                 <div className="relative flex-1 hidden w-0 lg:block">
                     <img
-                        className="absolute inset-0 object-cover w-full h-full"
+                        className="absolute inset-0 object-cover w-screen h-screen"
                         src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
                         alt=""
                     />
                 </div>
-                <div className="flex flex-col justify-center flex-1 h-screen sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+                <div className="flex flex-col justify-center flex-1 h-screen lg:flex-none lg:px-20 xl:px-24">
                     <div className="w-full max-w-sm mx-auto lg:w-96">
                         <div>
                             <h1 className="text-6xl font-bold tracking-tight text-indigo-500">DoCurator</h1>
@@ -66,7 +71,7 @@ const Signup: NextPage = () => {
                         <div className="mt-8">
 
                             <div className="mt-6">
-                                <form onSubmit={_submitHandler} className="space-y-6">
+                                <form onSubmit={_submitHandler} className="space-y-6 shrink">
 
                                     <div className="space-y-1">
                                         <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
@@ -201,6 +206,18 @@ const Signup: NextPage = () => {
                                                         aria-hidden="true"
                                                     />
                                                 )}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div className="relative flex items-start">
+                                            <div className="flex items-center h-5">
+                                                <input id="userType" name="userType" onChange={() => setIsStudent(!isStudent)} value={isStudent ? 'Student' : 'Admin'} aria-describedby="comments-description" type="checkbox" className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" />
+                                            </div>
+                                            <div className="ml-3 text-sm">
+                                                <label htmlFor="isStudent" className="font-medium text-gray-700">I am a student</label>
+                                                <p id="isStudentDescription" className="text-gray-500">Check this if you are creating an account as a student.</p>
                                             </div>
                                         </div>
                                     </div>
