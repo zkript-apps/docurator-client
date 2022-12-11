@@ -12,3 +12,5 @@ export const claimStudent = (body = null, id = "") =>
   apiCall(`${BASE}/claim-record/${id}`, generateHeaders(), PATCH, body);
 export const claimAccess = (body = null, id = "") =>
   apiCall(`${BASE}/claim-access/${id}`, generateHeaders(), PATCH, body);
+export const getStudent = () =>
+  apiCall(`${BASE}/student/`, generateHeaders(), GET);
