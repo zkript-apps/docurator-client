@@ -1,45 +1,51 @@
 import type { NextPage } from 'next'
-import useUser from "../hooks/useUser";
+import useCreateAccount from '../hooks/useCreateAccount';
 import { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/20/solid'
 
 const Signup: NextPage = () => {
-    const router = useRouter();
-    const inputElement = useRef(null);
-    const { triggerAddUser, isAddUserLoading } = useUser();
+    const router = useRouter()
+    const inputElement = useRef(null)
+    const { triggerCreateAccount, isCreateAccountLoading } = useCreateAccount()
     const [isPasswordVisible, setIsPasswordVisible] = useState(true)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(true)
     const [isStudent, setIsStudent] = useState(false)
 
     useEffect(() => {
         if (inputElement.current) {
-            inputElement.current.focus();
+            inputElement.current.focus()
         }
-
     }, []);
+
 
     const _submitHandler = (e) => {
         e.preventDefault();
-        const lastName = e.target.lastName.value;
-        const firstName = e.target.firstName.value;
-        const middleName = e.target.middleName.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+        const schoolName = e.target.schoolName.value
+        const schoolPhoneNumber = e.target.schoolPhoneNumber.value
+        const schoolEmail = e.target.schoolEmail.value
+        const lastName = e.target.lastName.value
+        const firstName = e.target.firstName.value
+        const middleName = e.target.middleName.value
+        const email = e.target.email.value
+        const password = e.target.password.value
         const phoneNumber = e.target.phoneNumber.value
         const confirmPassword = e.target.confirmPassword.value
-        const userType = e.target.userType.value;
+        const userType = e.target.userType.value
 
         if (password === confirmPassword) {
-            triggerAddUser({
+            triggerCreateAccount({
+                schoolName,
+                schoolPhoneNumber,
+                schoolEmail,
                 lastName,
                 firstName,
                 middleName,
                 email,
                 password,
                 phoneNumber,
-                userType
+                userType,
             })
         } else {
             toast.error("Passwords do not match", {
@@ -82,7 +88,7 @@ const Signup: NextPage = () => {
                                                 id="lastName"
                                                 name="lastName"
                                                 type="lastName"
-                                                disabled={isAddUserLoading}
+                                                disabled={isCreateAccountLoading}
                                                 placeholder={'Last Name'}
                                                 required
                                                 className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -93,7 +99,7 @@ const Signup: NextPage = () => {
                                                 id="firstName"
                                                 name="firstName"
                                                 type="firstName"
-                                                disabled={isAddUserLoading}
+                                                disabled={isCreateAccountLoading}
                                                 placeholder={'First Name'}
                                                 required
                                                 className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -104,7 +110,7 @@ const Signup: NextPage = () => {
                                                 id="middleName"
                                                 name="middleName"
                                                 type="middleName"
-                                                disabled={isAddUserLoading}
+                                                disabled={isCreateAccountLoading}
                                                 placeholder={'Middle Name'}
                                                 className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                             />
@@ -113,31 +119,25 @@ const Signup: NextPage = () => {
 
                                     <div>
                                         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                            Email address
+                                            Contact Information
                                         </label>
                                         <div className="mt-1">
                                             <input
                                                 id="email"
                                                 name="email"
                                                 type="email"
-                                                disabled={isAddUserLoading}
+                                                disabled={isCreateAccountLoading}
                                                 placeholder={'juandelacruz@samplemail.com'}
                                                 required
                                                 className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                             />
                                         </div>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">
-                                            Phone Number
-                                        </label>
                                         <div className="mt-1">
                                             <input
                                                 id="phoneNumber"
                                                 name="phoneNumber"
                                                 type="text"
-                                                disabled={isAddUserLoading}
+                                                disabled={isCreateAccountLoading}
                                                 placeholder={'09XXXXXXXXX'}
                                                 maxLength={11}
                                                 required
@@ -147,16 +147,13 @@ const Signup: NextPage = () => {
                                     </div>
 
                                     <div className="space-y-1" >
-                                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                            Password
-                                        </label>
                                         <div className="relative mt-1">
                                             <input
                                                 id="password"
                                                 name="password"
                                                 type={isPasswordVisible ? "password" : "text"}
-                                                disabled={isAddUserLoading}
-                                                placeholder={'●●●●●●●●●●●●●'}
+                                                disabled={isCreateAccountLoading}
+                                                placeholder={'Password'}
                                                 required
                                                 className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                             />
@@ -176,19 +173,13 @@ const Signup: NextPage = () => {
                                                 )}
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className="space-y-1">
-                                        <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                                            Confirm Password
-                                        </label>
                                         <div className="relative mt-1">
                                             <input
                                                 id="confirmPassword"
                                                 name="confirmPassword"
                                                 type={isConfirmPasswordVisible ? "password" : "text"}
-                                                disabled={isAddUserLoading}
-                                                placeholder={'●●●●●●●●●●●●●'}
+                                                disabled={isCreateAccountLoading}
+                                                placeholder={'Confirm Password'}
                                                 required
                                                 className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                             />
@@ -207,6 +198,46 @@ const Signup: NextPage = () => {
                                                     />
                                                 )}
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                            School Information
+                                        </label>
+                                        <div className="mt-1">
+                                            <input
+                                                id="schoolName"
+                                                name="schoolName"
+                                                type="text"
+                                                disabled={isCreateAccountLoading || isStudent}
+                                                placeholder={'School Name'}
+                                                required
+                                                className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                            />
+                                        </div>
+                                        <div className="mt-1">
+                                            <input
+                                                id="schoolEmail"
+                                                name="schoolEmail"
+                                                type="text"
+                                                disabled={isCreateAccountLoading || isStudent}
+                                                placeholder={'School Email'}
+                                                required
+                                                className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                            />
+                                        </div>
+                                        <div className="mt-1">
+                                            <input
+                                                id="schoolPhoneNumber"
+                                                name="schoolPhoneNumber"
+                                                type="text"
+                                                disabled={isCreateAccountLoading || isStudent}
+                                                placeholder={'School Phone Number'}
+                                                maxLength={11}
+                                                required
+                                                className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                            />
                                         </div>
                                     </div>
 
