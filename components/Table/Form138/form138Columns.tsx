@@ -44,4 +44,26 @@ export const FORM138_COLUMNS = [
             }
         },
     },
+    {
+        Header: "Teacher",
+        accessor: "teacher",
+        Cell: ({ value }) => {
+            if (value) {
+                return value
+            } else {
+                return "..."
+            }
+        },
+    },
+    {
+        Header: "Principal",
+        accessor: "principal",
+        Cell: ({ value }) => {
+            if (value) {
+                return value
+            } else {
+                return "..."
+            }
+        },
+    },
 ];
