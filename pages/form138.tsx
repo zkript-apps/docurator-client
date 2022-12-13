@@ -1,7 +1,8 @@
+import Dashboard from "../components/Dashboard"
 
 const Form138 = () => {
     return (
-        <h1 className="text-6xl font-bold tracking-tight text-indigo-500">Form 138</h1>
+        <Dashboard currentPage={"Form 138"} />
     )
 }
 
