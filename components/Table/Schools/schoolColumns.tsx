@@ -13,7 +13,7 @@ export const SCHOOLS_COLUMNS = [
     },
     {
         Header: "Email",
-        accessor: "email",
+        accessor: "schoolEmail",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -24,7 +24,7 @@ export const SCHOOLS_COLUMNS = [
     },
     {
         Header: "Mobile Number",
-        accessor: "phoneNumber",
+        accessor: "schoolPhoneNumber",
         Cell: ({ value }) => {
             if (value) {
                 return value

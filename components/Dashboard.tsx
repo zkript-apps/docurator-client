@@ -19,6 +19,7 @@ import useAuth from '../hooks/useAuth';
 import SchoolsList from './Table/Schools/schoolList';
 import Settings from './Settings/Settings';
 import Developer from './Developer';
+import Form138List from './Table/Form138/form138List';
 
 const Dashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
@@ -230,6 +231,7 @@ const Dashboard = ({ currentPage }: any) => {
                             {currentPage === "Students" ? <StudentList /> : null}
                             {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
                             {currentPage === "Form 137" ? <Form137List /> : null}
+                            {currentPage === "Form 138" ? <Form138List /> : null}
                             {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
                             {currentPage === "Schools" ? <SchoolsList /> : null}
                             {currentPage === "Settings" ? <Settings /> : null}
