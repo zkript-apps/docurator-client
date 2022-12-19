@@ -18,6 +18,7 @@ import GoodMoralCertificatesList from './Table/GoodMoralCertificates/goodMoralCe
 import useAuth from '../hooks/useAuth';
 import SchoolsList from './Table/Schools/schoolList';
 import Settings from './Settings/Settings';
+import Developer from './Developer';
 
 const Dashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
@@ -232,6 +233,7 @@ const Dashboard = ({ currentPage }: any) => {
                             {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
                             {currentPage === "Schools" ? <SchoolsList /> : null}
                             {currentPage === "Settings" ? <Settings /> : null}
+                            {currentPage === "Developer" ? <Developer /> : null}
                         </div>
                     </main>
                 </div>
