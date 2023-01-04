@@ -8,7 +8,3 @@ export const addStudents = (body = null) =>
   apiCall(`${BASE}`, generateHeaders(), POST, body);
 export const updateStudent = (body = null, id = "") =>
   apiCall(`${BASE}/${id}`, generateHeaders(), PATCH, body);
-export const claimStudent = (body = null, id = "") =>
-  apiCall(`${BASE}/claim-record/${id}`, generateHeaders(), PATCH, body);
-export const claimAccess = (body = null, id = "") =>
-  apiCall(`${BASE}/claim-access/${id}`, generateHeaders(), PATCH, body);

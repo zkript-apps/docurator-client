@@ -38,18 +38,21 @@ const useAuth = () => {
   } = useMutation(async (data: any) => await authenticateUser(data), {
     onSuccess: (data) => {
       Cookies.set("l_auth", data.token);
-      if (router.pathname === "/" && data.userType === "Admin") {
-        toast.success("You are now authenticated", {
-          id: "authenticateUser",
-          duration: 3000,
-        });
-        router.push("/students");
-      } else {
-        toast.error("You are not authorized to do that action", {
-          id: "authenticateUserError",
-          duration: 3000,
-        });
-        router.push("/");
+      if (router.pathname === "/") {
+        if (data.userType === "Admin") {
+          toast.success("You are now authenticated", {
+            id: "authenticateUser",
+            duration: 3000,
+          });
+          router.push("/students");
+        }
+        if (data.userType === "Student") {
+          toast.success("You are now authenticated", {
+            id: "authenticateUser",
+            duration: 3000,
+          });
+          router.push("/schools");
+        }
       }
     },
     onError: (err: any) => {

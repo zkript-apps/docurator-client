@@ -20,6 +20,8 @@ import SchoolsList from './Table/Schools/schoolList';
 import Settings from './Settings/Settings';
 import Developer from './Developer';
 import Form138List from './Table/Form138/form138List';
+import { StudentForm137 } from './StudentForm137';
+import { StudentInformation } from './StudentInformation';
 
 const Dashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
@@ -39,7 +41,7 @@ const Dashboard = ({ currentPage }: any) => {
         }
     }, [firstName, firstNameLetter, lastName, lastNameLetter, namePlaceHolder, verifyLoginData])
 
-    const navigation = [
+    const adminNavigation = [
         { name: 'Students', href: '/students', icon: AcademicCapIcon, current: currentPage === "Students" ? true : false },
         { name: 'Schools', href: '/schools', icon: BuildingLibraryIcon, current: currentPage === "Schools" ? true : false },
         { name: 'Form 137', href: '/form137', icon: DocumentTextIcon, current: currentPage === "Form 137" ? true : false },
@@ -49,6 +51,16 @@ const Dashboard = ({ currentPage }: any) => {
         { name: 'Developer', href: '/developer', icon: CodeBracketIcon, current: currentPage === "Developer" ? true : false },
         { name: 'Settings', href: '/settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
     ]
+
+    const studentNavigation = [
+        { name: 'Schools', href: '/schools', icon: BuildingLibraryIcon, current: currentPage === "Schools" ? true : false },
+        { name: "Student's Information", href: '/student-information', icon: DocumentTextIcon, current: currentPage === "Student's Information" ? true : false },
+        { name: "Student's Form 137", href: '/student-form137', icon: DocumentTextIcon, current: currentPage === "Student Form 137" ? true : false },
+        { name: "Student's Form 138", href: '/student-form138', icon: DocumentTextIcon, current: currentPage === "Form 138" ? true : false },
+        { name: 'Birth Certificate', href: '/birth-certificates', icon: DocumentTextIcon, current: currentPage === "Birth Certificates" ? true : false },
+        { name: 'Settings', href: '/settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
+    ]
+
     const userNavigation = [
         { name: 'Sign out' },
     ]
@@ -111,8 +123,8 @@ const Dashboard = ({ currentPage }: any) => {
                                         <h1 className="text-3xl font-bold tracking-tight text-white">DoCurator</h1>
                                     </div>
                                     <div className="flex-1 h-0 mt-5 overflow-y-auto cursor-pointer">
-                                        <nav className="px-2 space-y-1 cursor-pointer">
-                                            {navigation.map((item) => (
+                                        {verifyLoginData?.userType === 'Admin' ? <nav className="px-2 space-y-1 cursor-pointer">
+                                            {adminNavigation.map((item) => (
                                                 <a
                                                     key={item.name}
                                                     className={classNames(
@@ -124,7 +136,20 @@ const Dashboard = ({ currentPage }: any) => {
                                                     {item.name}
                                                 </a>
                                             ))}
-                                        </nav>
+                                        </nav> : <nav className="px-2 space-y-1 cursor-pointer">
+                                            {studentNavigation.map((item) => (
+                                                <a
+                                                    key={item.name}
+                                                    className={classNames(
+                                                        item.current ? 'bg-indigo-800 text-white cursor-pointer' : 'text-indigo-100 hover:bg-indigo-600',
+                                                        'group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer'
+                                                    )}
+                                                >
+                                                    <item.icon className="flex-shrink-0 w-6 h-6 mr-4 text-indigo-300 cursor-pointer" aria-hidden="true" />
+                                                    {item.name}
+                                                </a>
+                                            ))}
+                                        </nav>}
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
@@ -142,21 +167,35 @@ const Dashboard = ({ currentPage }: any) => {
                             <h1 className="text-3xl font-bold tracking-tight text-white">DoCurator</h1>
                         </div>
                         <div className="flex flex-col flex-1 mt-40">
-                            <nav className="flex-1 px-2 pb-4 space-y-1">
-                                {navigation.map((item) => (
+                            {verifyLoginData?.userType === 'Admin' ? <nav className="px-2 space-y-1 cursor-pointer">
+                                {adminNavigation.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.href}
                                         className={classNames(
-                                            item.current ? 'bg-indigo-800 text-white' : 'text-white hover:bg-indigo-600',
-                                            'group flex items-center px-2 py-2 text-m font-medium rounded-md'
+                                            item.current ? 'bg-indigo-800 text-white cursor-pointer' : 'text-indigo-100 hover:bg-indigo-600',
+                                            'group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer'
                                         )}
                                     >
-                                        <item.icon className="flex-shrink-0 w-6 h-6 mr-3 text-indigo-300" aria-hidden="true" />
+                                        <item.icon className="flex-shrink-0 w-6 h-6 mr-4 text-indigo-300 cursor-pointer" aria-hidden="true" />
                                         {item.name}
                                     </a>
                                 ))}
-                            </nav>
+                            </nav> : <nav className="px-2 space-y-1 cursor-pointer">
+                                {studentNavigation.map((item) => (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        className={classNames(
+                                            item.current ? 'bg-indigo-800 text-white cursor-pointer' : 'text-indigo-100 hover:bg-indigo-600',
+                                            'group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer'
+                                        )}
+                                    >
+                                        <item.icon className="flex-shrink-0 w-6 h-6 mr-4 text-indigo-300 cursor-pointer" aria-hidden="true" />
+                                        {item.name}
+                                    </a>
+                                ))}
+                            </nav>}
                         </div>
                     </div>
                 </div>
@@ -227,16 +266,21 @@ const Dashboard = ({ currentPage }: any) => {
                         </div>
                     </div>
                     <main>
-                        <div className="py-6">
-                            {currentPage === "Students" ? <StudentList /> : null}
-                            {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
-                            {currentPage === "Form 137" ? <Form137List /> : null}
-                            {currentPage === "Form 138" ? <Form138List /> : null}
-                            {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
-                            {currentPage === "Schools" ? <SchoolsList /> : null}
-                            {currentPage === "Settings" ? <Settings /> : null}
-                            {currentPage === "Developer" ? <Developer /> : null}
-                        </div>
+                        {verifyLoginData?.userType === 'Admin' ?
+                            <div className="py-6">
+                                {currentPage === "Students" ? <StudentList /> : null}
+                                {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
+                                {currentPage === "Form 137" ? <Form137List /> : null}
+                                {currentPage === "Form 138" ? <Form138List /> : null}
+                                {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
+                                {currentPage === "Schools" ? <SchoolsList /> : null}
+                                {currentPage === "Settings" ? <Settings /> : null}
+                                {currentPage === "Developer" ? <Developer /> : null}
+                            </div> : <div className="py-6">
+                                {currentPage === "Form 137" ? <StudentForm137 /> : null}
+                                {currentPage === "Student's Information" ? <StudentInformation /> : null}
+                            </div>
+                        }
                     </main>
                 </div>
             </div>
