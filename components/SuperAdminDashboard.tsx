@@ -38,7 +38,6 @@ const SuperAdminDashboard = ({ currentPage }: any) => {
 
     const studentNavigation = [
         { name: 'Verify Accounts', href: '/verify-account', icon: UserPlusIcon, current: currentPage === "Verify Accounts" ? true : false },
-        { name: 'Account List', href: '/account-list', icon: UserGroupIcon, current: currentPage === "Account List" ? true : false },
         { name: 'Settings', href: '/super-admin-settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
     ]
 

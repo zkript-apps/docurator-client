@@ -70,7 +70,7 @@ const VerifyAccountList = () => {
                 <div className="flex gap-4">
                     <button
                         disabled={row.original._id === "6397e78ad4c2d6ff826c356f" ? true : false}
-                        onClick={() => verifyAccount(row.original._id.toString())}
+                        onClick={() => verifyAccount(row.original?._id?.toString())}
                         className={row.original._id === "6397e78ad4c2d6ff826c356f" ?
                             "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-gray-500 border border-transparent rounded-md shadow-sm focus:outline-none" : "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-green-500 border border-transparent rounded-md shadow-sm hover:bg-green-700"}
                     >
@@ -78,7 +78,7 @@ const VerifyAccountList = () => {
                     </button >
                     <button
                         disabled={row.original._id === "6397e78ad4c2d6ff826c356f" ? true : false}
-                        onClick={() => cancelVerification(row.original._id.toString())}
+                        onClick={() => cancelVerification(row.original?._id?.toString())}
                         className={row.original._id === "6397e78ad4c2d6ff826c356f" ?
                             "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-gray-500 border border-transparent rounded-md shadow-sm focus:outline-none" : "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-red-500 border border-transparent rounded-md shadow-sm hover:bg-red-700"}
                     >

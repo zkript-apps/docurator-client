@@ -4,23 +4,21 @@ import {
     Bars3BottomLeftIcon,
     DocumentTextIcon,
     XMarkIcon,
-    CodeBracketIcon,
     AdjustmentsHorizontalIcon,
     BuildingLibraryIcon,
-    AcademicCapIcon,
-    DocumentPlusIcon
 } from '@heroicons/react/24/outline'
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
 import useAuth from '../hooks/useAuth';
 import Settings from './Settings/Settings';
-import { StudentForm137 } from './StudentForm137';
 import { StudentInformation } from './StudentInformation';
 import SchoolsList from './Table/Schools/schoolList';
-import ClaimStudentRecords from './ClaimStudentRecord';
+import useGetStudent from '../hooks/useGetStudent';
+import ClaimRecordModal from './ClaimRecordModal';
 
 const StudentDashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
+    const { studentInformation } = useGetStudent();
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [firstNameLetter, setFirstNameLetter] = useState("")
@@ -38,9 +36,8 @@ const StudentDashboard = ({ currentPage }: any) => {
     }, [firstName, firstNameLetter, lastName, lastNameLetter, namePlaceHolder, verifyLoginData])
 
     const studentNavigation = [
-        { name: 'Claim Student Records', href: '/claim-student-records', icon: DocumentPlusIcon, current: currentPage === "Claim Student Records" ? true : false },
-        { name: 'School List', href: '/school-list', icon: BuildingLibraryIcon, current: currentPage === "School List" ? true : false },
         { name: "Student's Information", href: '/student-information', icon: DocumentTextIcon, current: currentPage === "Student's Information" ? true : false },
+        { name: 'School List', href: '/school-list', icon: BuildingLibraryIcon, current: currentPage === "School List" ? true : false },
         { name: 'Birth Certificate', href: '/birth-certificates', icon: DocumentTextIcon, current: currentPage === "Birth Certificates" ? true : false },
         { name: 'Settings', href: '/student-settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
     ]
@@ -166,14 +163,7 @@ const StudentDashboard = ({ currentPage }: any) => {
                             <span className="sr-only">Open sidebar</span>
                             <Bars3BottomLeftIcon className="w-6 h-6" aria-hidden="true" />
                         </button>
-                        <div className="flex justify-between flex-1 px-4">
-                            <div className="flex flex-1">
-                                <form className="flex w-full md:ml-0" action="#" method="GET">
-                                    <label htmlFor="search-field" className="sr-only">
-                                        Search
-                                    </label>
-                                </form>
-                            </div>
+                        <div className="flex justify-end flex-1 px-4">
                             <div className="flex items-center ml-4 md:ml-6">
                                 {/* Profile dropdown */}
                                 <Menu as="div" className="relative ml-3">
@@ -224,7 +214,7 @@ const StudentDashboard = ({ currentPage }: any) => {
                     </div>
                     <main>
                         <div className="py-6">
-                            {currentPage === "Claim Student Records" ? <ClaimStudentRecords /> : null}
+                            {currentPage === "Student's Information" ? !studentInformation ? <ClaimRecordModal /> : null : null}
                             {currentPage === "Student's Information" ? <StudentInformation /> : null}
                             {currentPage === "Settings" ? <Settings /> : null}
                             {currentPage === "School List" ? <SchoolsList /> : null}

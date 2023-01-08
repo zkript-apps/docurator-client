@@ -10,5 +10,5 @@ export const addStudents = (body = null) =>
   apiCall(`${BASE}`, generateHeaders(), POST, body);
 export const updateStudent = (body = null, id = "") =>
   apiCall(`${BASE}/${id}`, generateHeaders(), PATCH, body);
-export const claimStudentRecord = (body = null) =>
-  apiCall(`${BASE}/claim-record`, generateHeaders(), PATCH, body);
+export const claimStudentRecord = (body = null, lrn = "") =>
+  apiCall(`${BASE}/claim-record/${lrn}`, generateHeaders(), PATCH, body);

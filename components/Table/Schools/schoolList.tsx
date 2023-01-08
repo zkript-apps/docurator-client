@@ -9,7 +9,6 @@ import useClaimAccess from "../../../hooks/useClaimAccess";
 const SchoolsList = () => {
     const { studentInformation } = useGetStudent();
     const { triggerAddClaimAccess } = useAddClaimAccess()
-    const { claimAccessData } = useClaimAccess()
     const { verifyLoginData } = useAuth();
     const [schools, setSchools] = useState([]);
     const { schoolsData, refetchSchools } = useSchools();

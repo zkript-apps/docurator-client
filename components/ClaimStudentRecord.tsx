@@ -47,7 +47,6 @@ const ClaimStudentRecords = () => {
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
