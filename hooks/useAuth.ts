@@ -39,6 +39,13 @@ const useAuth = () => {
     onSuccess: (data) => {
       Cookies.set("l_auth", data.token);
       if (router.pathname === "/") {
+        if (data.userType === "Super Admin") {
+          toast.success("You are now authenticated", {
+            id: "authenticateUser",
+            duration: 3000,
+          });
+          router.push("/verify-account");
+        }
         if (data.userType === "Admin") {
           toast.success("You are now authenticated", {
             id: "authenticateUser",
@@ -51,7 +58,7 @@ const useAuth = () => {
             id: "authenticateUser",
             duration: 3000,
           });
-          router.push("/schools");
+          router.push("/student-information");
         }
       }
     },

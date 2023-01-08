@@ -7,20 +7,19 @@ import {
     CodeBracketIcon,
     AdjustmentsHorizontalIcon,
     BuildingLibraryIcon,
-    AcademicCapIcon
+    AcademicCapIcon,
+    DocumentPlusIcon
 } from '@heroicons/react/24/outline'
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
-import StudentList from './Table/Students/studentList'
-import BirthCertificatesList from './Table/BirthCertificates/birthCertificatesList';
-import Form137List from './Table/Form137/form137List';
-import GoodMoralCertificatesList from './Table/GoodMoralCertificates/goodMoralCertificatesList';
 import useAuth from '../hooks/useAuth';
 import Settings from './Settings/Settings';
-import Developer from './Developer';
-import Form138List from './Table/Form138/form138List';
+import { StudentForm137 } from './StudentForm137';
+import { StudentInformation } from './StudentInformation';
+import SchoolsList from './Table/Schools/schoolList';
+import ClaimStudentRecords from './ClaimStudentRecord';
 
-const Dashboard = ({ currentPage }: any) => {
+const StudentDashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -38,14 +37,12 @@ const Dashboard = ({ currentPage }: any) => {
         }
     }, [firstName, firstNameLetter, lastName, lastNameLetter, namePlaceHolder, verifyLoginData])
 
-    const adminNavigation = [
-        { name: 'Students', href: '/students', icon: AcademicCapIcon, current: currentPage === "Students" ? true : false },
-        { name: 'Form 137', href: '/form137', icon: DocumentTextIcon, current: currentPage === "Form 137" ? true : false },
-        { name: 'Form 138', href: '/form138', icon: DocumentTextIcon, current: currentPage === "Form 138" ? true : false },
-        { name: 'Good Moral Certificates', href: '/good-moral-certificates', icon: DocumentTextIcon, current: currentPage === "Good Moral Certificates" ? true : false },
-        { name: 'Birth Certificates', href: '/birth-certificates', icon: DocumentTextIcon, current: currentPage === "Birth Certificates" ? true : false },
-        { name: 'Developer', href: '/developer', icon: CodeBracketIcon, current: currentPage === "Developer" ? true : false },
-        { name: 'Settings', href: '/settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
+    const studentNavigation = [
+        { name: 'Claim Student Records', href: '/claim-student-records', icon: DocumentPlusIcon, current: currentPage === "Claim Student Records" ? true : false },
+        { name: 'School List', href: '/school-list', icon: BuildingLibraryIcon, current: currentPage === "School List" ? true : false },
+        { name: "Student's Information", href: '/student-information', icon: DocumentTextIcon, current: currentPage === "Student's Information" ? true : false },
+        { name: 'Birth Certificate', href: '/birth-certificates', icon: DocumentTextIcon, current: currentPage === "Birth Certificates" ? true : false },
+        { name: 'Settings', href: '/student-settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
     ]
 
     const userNavigation = [
@@ -111,7 +108,7 @@ const Dashboard = ({ currentPage }: any) => {
                                     </div>
                                     <div className="flex-1 h-0 mt-5 overflow-y-auto cursor-pointer">
                                         <nav className="px-2 space-y-1 cursor-pointer">
-                                            {adminNavigation.map((item) => (
+                                            {studentNavigation.map((item) => (
                                                 <a
                                                     key={item.name}
                                                     className={classNames(
@@ -142,7 +139,7 @@ const Dashboard = ({ currentPage }: any) => {
                         </div>
                         <div className="flex flex-col flex-1 mt-40">
                             <nav className="px-2 space-y-1 cursor-pointer">
-                                {adminNavigation.map((item) => (
+                                {studentNavigation.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.href}
@@ -227,13 +224,10 @@ const Dashboard = ({ currentPage }: any) => {
                     </div>
                     <main>
                         <div className="py-6">
-                            {currentPage === "Students" ? <StudentList /> : null}
-                            {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
-                            {currentPage === "Form 137" ? <Form137List /> : null}
-                            {currentPage === "Form 138" ? <Form138List /> : null}
-                            {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
+                            {currentPage === "Claim Student Records" ? <ClaimStudentRecords /> : null}
+                            {currentPage === "Student's Information" ? <StudentInformation /> : null}
                             {currentPage === "Settings" ? <Settings /> : null}
-                            {currentPage === "Developer" ? <Developer /> : null}
+                            {currentPage === "School List" ? <SchoolsList /> : null}
                         </div>
                     </main>
                 </div>
@@ -242,4 +236,4 @@ const Dashboard = ({ currentPage }: any) => {
     )
 }
 
-export default Dashboard
+export default StudentDashboard

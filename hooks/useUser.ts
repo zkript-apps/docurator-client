@@ -11,7 +11,7 @@ const useUser = () => {
     async (data) => await addUser(data),
     {
       onSuccess: () => {
-        toast.success("Successfully created! You can now login", {
+        toast.success("Successfully created an account", {
           id: "addUser",
           duration: 3000,
         });

@@ -1,9 +1,9 @@
-import Dashboard from "../components/Dashboard"
+import StudentDashboard from "../components/StudentDashboard"
 
 
 const StudentsForm137 = () => {
     return (
-        <Dashboard currentPage={"Student Form 137"} />
+        <StudentDashboard currentPage={"Student Form 137"} />
     )
 }
 

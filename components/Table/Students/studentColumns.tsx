@@ -2,6 +2,17 @@ import { format } from "date-fns";
 
 export const STUDENT_COLUMNS = [
     {
+        Header: "LRN",
+        accessor: "studentId.lrn",
+        Cell: ({ value }) => {
+            if (value) {
+                return value
+            } else {
+                return "..."
+            }
+        },
+    },
+    {
         Header: "Last Name",
         accessor: "studentId.userId.lastName",
         Cell: ({ value }) => {

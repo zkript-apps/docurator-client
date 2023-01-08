@@ -4,7 +4,11 @@ const BASE = "/api/students";
 import { generateHeaders } from "./helpers";
 
 export const getStudents = () => apiCall(`${BASE}`, generateHeaders(), GET);
+export const getStudent = () =>
+  apiCall(`${BASE}/information`, generateHeaders(), GET);
 export const addStudents = (body = null) =>
   apiCall(`${BASE}`, generateHeaders(), POST, body);
 export const updateStudent = (body = null, id = "") =>
   apiCall(`${BASE}/${id}`, generateHeaders(), PATCH, body);
+export const claimStudentRecord = (body = null) =>
+  apiCall(`${BASE}/claim-record`, generateHeaders(), PATCH, body);

@@ -61,7 +61,6 @@ const Table = ({ tableData, tableColumns }) => {
                           : <ArrowUpIcon className="w-5 h-5 text-blue-500" />
                         : ""}
                     </span>
-
                   </th>
                 ))}
               </tr>
