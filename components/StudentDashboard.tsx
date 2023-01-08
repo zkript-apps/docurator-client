@@ -15,6 +15,8 @@ import { StudentInformation } from './StudentInformation';
 import SchoolsList from './Table/Schools/schoolList';
 import useGetStudent from '../hooks/useGetStudent';
 import ClaimRecordModal from './ClaimRecordModal';
+import Form138List from './Table/Form138/form138List';
+import StudentForm138List from './Table/StudentForm138/studentForm138List';
 
 const StudentDashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
@@ -38,7 +40,8 @@ const StudentDashboard = ({ currentPage }: any) => {
     const studentNavigation = [
         { name: "Student's Information", href: '/student-information', icon: DocumentTextIcon, current: currentPage === "Student's Information" ? true : false },
         { name: 'School List', href: '/school-list', icon: BuildingLibraryIcon, current: currentPage === "School List" ? true : false },
-        { name: 'Birth Certificate', href: '/birth-certificates', icon: DocumentTextIcon, current: currentPage === "Birth Certificates" ? true : false },
+        { name: 'Form 138 List', href: '/student-form138', icon: DocumentTextIcon, current: currentPage === "Form 138 List" ? true : false },
+        { name: 'Birth Certificate', href: '/student-birth-certificate', icon: DocumentTextIcon, current: currentPage === "Student Birth Certificate" ? true : false },
         { name: 'Settings', href: '/student-settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
     ]
 
@@ -218,6 +221,7 @@ const StudentDashboard = ({ currentPage }: any) => {
                             {currentPage === "Student's Information" ? <StudentInformation /> : null}
                             {currentPage === "Settings" ? <Settings /> : null}
                             {currentPage === "School List" ? <SchoolsList /> : null}
+                            {currentPage === "Form 138 List" ? <StudentForm138List /> : null}
                         </div>
                     </main>
                 </div>

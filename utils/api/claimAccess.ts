@@ -3,6 +3,8 @@ import apiCall from "./apiCall";
 const BASE = "/api/claim-access";
 import { generateHeaders } from "./helpers";
 
+export const getAllClaimAccess = () =>
+  apiCall(`${BASE}/all`, generateHeaders(), GET);
 export const getClaimAccess = () => apiCall(`${BASE}`, generateHeaders(), GET);
 export const addClaimAccess = (body = null) =>
   apiCall(`${BASE}`, generateHeaders(), POST, body);
