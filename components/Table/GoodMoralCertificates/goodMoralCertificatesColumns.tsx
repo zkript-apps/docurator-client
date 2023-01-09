@@ -14,7 +14,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     },
     {
         Header: "Last Name",
-        accessor: "studentId.userId.lastName",
+        accessor: "lastName",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -25,7 +25,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     },
     {
         Header: "First Name",
-        accessor: "studentId.userId.firstName",
+        accessor: "firstName",
         Cell: ({ value }) => {
             if (value) {
                 return value

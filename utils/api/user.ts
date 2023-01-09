@@ -1,4 +1,4 @@
-import { PATCH, POST, PUT } from "../constants";
+import { PATCH, POST, GET, DELETE } from "../constants";
 import apiCall from "./apiCall";
 const BASE = "/api/users";
 import { generateHeaders } from "./helpers";
@@ -15,3 +15,7 @@ export const updateUser = (body = null, id = "") =>
   apiCall(`${BASE}/${id}`, generateHeaders(), PATCH, body);
 export const updateUserPassword = (body = null, id = "") =>
   apiCall(`${BASE}/change-password/${id}`, generateHeaders(), PATCH, body);
+export const getUnverifiedAccounts = () =>
+  apiCall(`${BASE}/unverified`, generateHeaders(), GET);
+export const deleteUser = (id = "") =>
+  apiCall(`${BASE}/${id}`, generateHeaders(), DELETE);

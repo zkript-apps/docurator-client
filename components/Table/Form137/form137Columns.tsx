@@ -12,6 +12,17 @@ export const FORM137_COLUMNS = [
         },
     },
     {
+        Header: "Education Level",
+        accessor: "educationLevel",
+        Cell: ({ value }) => {
+            if (value) {
+                return value
+            } else {
+                return "..."
+            }
+        },
+    },
+    {
         Header: "Status of Applicant",
         accessor: "studentId.statusOfApplicant",
         Cell: ({ value }) => {

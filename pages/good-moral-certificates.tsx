@@ -1,9 +1,9 @@
 import Dashboard from "../components/Dashboard"
 
-const Form137 = () => {
+const GoodMoralCertificates = () => {
     return (
         <Dashboard currentPage={"Good Moral Certificates"} />
     )
 }
 
-export default Form137
+export default GoodMoralCertificates

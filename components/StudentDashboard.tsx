@@ -4,24 +4,23 @@ import {
     Bars3BottomLeftIcon,
     DocumentTextIcon,
     XMarkIcon,
-    CodeBracketIcon,
     AdjustmentsHorizontalIcon,
     BuildingLibraryIcon,
-    AcademicCapIcon
 } from '@heroicons/react/24/outline'
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
-import StudentList from './Table/Students/studentList'
-import BirthCertificatesList from './Table/BirthCertificates/birthCertificatesList';
-import Form137List from './Table/Form137/form137List';
-import GoodMoralCertificatesList from './Table/GoodMoralCertificates/goodMoralCertificatesList';
 import useAuth from '../hooks/useAuth';
 import Settings from './Settings/Settings';
-import Developer from './Developer';
+import { StudentInformation } from './StudentInformation';
+import SchoolsList from './Table/Schools/schoolList';
+import useGetStudent from '../hooks/useGetStudent';
+import ClaimRecordModal from './ClaimRecordModal';
 import Form138List from './Table/Form138/form138List';
+import StudentForm138List from './Table/StudentForm138/studentForm138List';
 
-const Dashboard = ({ currentPage }: any) => {
+const StudentDashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
+    const { studentInformation } = useGetStudent();
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [firstNameLetter, setFirstNameLetter] = useState("")
@@ -38,14 +37,12 @@ const Dashboard = ({ currentPage }: any) => {
         }
     }, [firstName, firstNameLetter, lastName, lastNameLetter, namePlaceHolder, verifyLoginData])
 
-    const adminNavigation = [
-        { name: 'Students', href: '/students', icon: AcademicCapIcon, current: currentPage === "Students" ? true : false },
-        { name: 'Form 137', href: '/form137', icon: DocumentTextIcon, current: currentPage === "Form 137" ? true : false },
-        { name: 'Form 138', href: '/form138', icon: DocumentTextIcon, current: currentPage === "Form 138" ? true : false },
-        { name: 'Good Moral Certificates', href: '/good-moral-certificates', icon: DocumentTextIcon, current: currentPage === "Good Moral Certificates" ? true : false },
-        { name: 'Birth Certificates', href: '/birth-certificates', icon: DocumentTextIcon, current: currentPage === "Birth Certificates" ? true : false },
-        { name: 'Developer', href: '/developer', icon: CodeBracketIcon, current: currentPage === "Developer" ? true : false },
-        { name: 'Settings', href: '/settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
+    const studentNavigation = [
+        { name: "Student's Information", href: '/student-information', icon: DocumentTextIcon, current: currentPage === "Student's Information" ? true : false },
+        { name: 'School List', href: '/school-list', icon: BuildingLibraryIcon, current: currentPage === "School List" ? true : false },
+        { name: 'Form 138 List', href: '/student-form138', icon: DocumentTextIcon, current: currentPage === "Form 138 List" ? true : false },
+        { name: 'Birth Certificate', href: '/student-birth-certificate', icon: DocumentTextIcon, current: currentPage === "Student Birth Certificate" ? true : false },
+        { name: 'Settings', href: '/student-settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
     ]
 
     const userNavigation = [
@@ -111,7 +108,7 @@ const Dashboard = ({ currentPage }: any) => {
                                     </div>
                                     <div className="flex-1 h-0 mt-5 overflow-y-auto cursor-pointer">
                                         <nav className="px-2 space-y-1 cursor-pointer">
-                                            {adminNavigation.map((item) => (
+                                            {studentNavigation.map((item) => (
                                                 <a
                                                     key={item.name}
                                                     className={classNames(
@@ -142,7 +139,7 @@ const Dashboard = ({ currentPage }: any) => {
                         </div>
                         <div className="flex flex-col flex-1 mt-40">
                             <nav className="px-2 space-y-1 cursor-pointer">
-                                {adminNavigation.map((item) => (
+                                {studentNavigation.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.href}
@@ -169,14 +166,7 @@ const Dashboard = ({ currentPage }: any) => {
                             <span className="sr-only">Open sidebar</span>
                             <Bars3BottomLeftIcon className="w-6 h-6" aria-hidden="true" />
                         </button>
-                        <div className="flex justify-between flex-1 px-4">
-                            <div className="flex flex-1">
-                                <form className="flex w-full md:ml-0" action="#" method="GET">
-                                    <label htmlFor="search-field" className="sr-only">
-                                        Search
-                                    </label>
-                                </form>
-                            </div>
+                        <div className="flex justify-end flex-1 px-4">
                             <div className="flex items-center ml-4 md:ml-6">
                                 {/* Profile dropdown */}
                                 <Menu as="div" className="relative ml-3">
@@ -227,13 +217,11 @@ const Dashboard = ({ currentPage }: any) => {
                     </div>
                     <main>
                         <div className="py-6">
-                            {currentPage === "Students" ? <StudentList /> : null}
-                            {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
-                            {currentPage === "Form 137" ? <Form137List /> : null}
-                            {currentPage === "Form 138" ? <Form138List /> : null}
-                            {currentPage === "Good Moral Certificates" ? <GoodMoralCertificatesList /> : null}
+                            {currentPage === "Student's Information" ? !studentInformation ? <ClaimRecordModal /> : null : null}
+                            {currentPage === "Student's Information" ? <StudentInformation /> : null}
                             {currentPage === "Settings" ? <Settings /> : null}
-                            {currentPage === "Developer" ? <Developer /> : null}
+                            {currentPage === "School List" ? <SchoolsList /> : null}
+                            {currentPage === "Form 138 List" ? <StudentForm138List /> : null}
                         </div>
                     </main>
                 </div>
@@ -242,4 +230,4 @@ const Dashboard = ({ currentPage }: any) => {
     )
 }
 
-export default Dashboard
+export default StudentDashboard
