@@ -7,7 +7,7 @@ const useAddClaimAccess = () => {
   const { mutate: triggerAddClaimAccess, isLoading: isAddClaimAccessLoading } =
     useMutation(async (data) => await addClaimAccess(data), {
       onSuccess: () => {
-        toast.success("Successfully claimed your records", {
+        toast.success("Successfully Sent your records", {
           id: "addClaimAccess",
           duration: 3000,
         });

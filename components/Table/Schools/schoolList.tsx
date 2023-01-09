@@ -19,7 +19,7 @@ const SchoolsList = () => {
     useEffect(() => {
         if (verifyLoginData) {
             setSchools(schoolsData)
-            setAllClaimAccess(allClaimAccessData.items)
+            setAllClaimAccess(allClaimAccessData?.items)
         }
     }, [verifyLoginData, schools, schoolsData, refetchSchools, allClaimAccessData]);
 
