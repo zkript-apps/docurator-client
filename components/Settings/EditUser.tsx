@@ -128,9 +128,10 @@ const EditUser = ({ isEditUserActive }) => {
                             </li>
                             <li className="px-6 py-4">
                                 <input
-                                    type="number"
+                                    type="text"
                                     name="phoneNumber"
                                     id="phoneNumber"
+                                    maxLength={11}
                                     required
                                     className="w-full px-0 py-0 border-0 border-transparent focus:border-indigo-500 focus:ring-0 sm:text-sm"
                                     defaultValue={phoneNumber}
