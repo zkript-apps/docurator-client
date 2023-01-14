@@ -9,7 +9,7 @@ const useCreateAccount = () => {
   const { mutate: triggerCreateAccount, isLoading: isCreateAccountLoading } =
     useMutation(async (data) => await createAccount(data), {
       onSuccess: () => {
-        toast.success("Successfully created! You can now login", {
+        toast.success("Your account has been successfully created!", {
           id: "addUser",
           duration: 3000,
         });

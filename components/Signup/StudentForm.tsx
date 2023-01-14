@@ -10,13 +10,13 @@ const StudentForm: NextPage = () => {
     const { triggerCreateAccount, isCreateAccountLoading } = useCreateAccount()
     const [isPasswordVisible, setIsPasswordVisible] = useState(true)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(true)
+    const [isUnderstood, setIsUnderstood] = useState(false)
 
     useEffect(() => {
         if (inputElement.current) {
             inputElement.current.focus()
         }
     }, []);
-
 
     const _submitHandler = (e) => {
         e.preventDefault();
@@ -129,6 +129,7 @@ const StudentForm: NextPage = () => {
                                     type={isPasswordVisible ? "password" : "text"}
                                     disabled={isCreateAccountLoading}
                                     placeholder={'Password'}
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                     required
                                     className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                 />
@@ -174,12 +175,31 @@ const StudentForm: NextPage = () => {
                                     )}
                                 </div>
                             </div>
+                            <p className="mt-2 text-sm text-gray-500">Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</p>
+                        </div>
+                        <div>
+                            <div className="flex items-center mt-6 mb-2">
+                                <input
+                                    id="isUnderstood"
+                                    name="isUnderstood"
+                                    onClick={() => setIsUnderstood(!isUnderstood)}
+                                    type="checkbox"
+                                    className="w-4 h-4 text-indigo-500 border-gray-300 rounded focus:ring-indigo-500"
+                                />
+                                <label htmlFor="remember-me" className="block ml-2 text-sm text-gray-900">
+                                    I accept
+                                </label>
+
+                            </div>
+                            <p className="mb-4 text-sm text-gray-500">By checking this, you are giving us permission to process these information you have entered.</p>
                         </div>
 
                         <div>
                             <button
                                 type="submit"
-                                className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                disabled={!isUnderstood}
+                                className={isUnderstood ? "flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" :
+                                    "flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gray-500 border border-transparent rounded-md shadow-sm"}
                             >
                                 Sign up
                             </button>

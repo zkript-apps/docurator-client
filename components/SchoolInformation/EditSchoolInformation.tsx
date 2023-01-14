@@ -1,62 +1,52 @@
 import React, { useState, useEffect } from 'react'
 import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
-import useUser from '../../hooks/useUser';
+import useUpateSchool from '../../hooks/useUpdateSchool';
 
-const EditUser = ({ isEditUserActive }) => {
+const EditverifyLoginData = ({ isEditSchoolActive }) => {
+    const { triggerUpdateSchool, isUpdateSchoolLoading } = useUpateSchool()
     const { verifyLoginData, refetchVerifyLogin } = useAuth();
-    const { triggerUpdateUser, isUpdateUserLoading } = useUser()
-    const [lastName, setLastName] = useState("")
-    const [firstName, setFirstName] = useState("")
-    const [middleName, setMiddleName] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("")
-    const [isEditUserSuccess, setIsEditUserSuccess] = useState(false)
-
-    useEffect(() => {
-        setLastName(verifyLoginData?.lastName)
-        setFirstName(verifyLoginData?.firstName)
-        setMiddleName(verifyLoginData?.middleName)
-        setPhoneNumber(verifyLoginData?.phoneNumber)
-    }, [
-        verifyLoginData?.email,
-        verifyLoginData?.firstName,
-        verifyLoginData?.lastName,
-        verifyLoginData?.middleName,
-        verifyLoginData?.phoneNumber
-    ])
-
+    const [isEditSchoolSuccess, setIsEditSchoolSuccess] = useState(false)
 
     const _submitHandler = (e) => {
         e.preventDefault()
-        const inputLastName = e.target.lastName.value;
-        const inputFirstName = e.target.firstName.value;
-        const inputMiddleName = e.target.middleName.value;
-        const inputPhoneNumber = e.target.phoneNumber.value;
-        if (inputLastName && inputFirstName && inputPhoneNumber) {
+        const inputSchoolId = e.target.schoolId.value;
+        const inputSchoolName = e.target.schoolName.value;
+        const inputSchoolEmail = e.target.schoolEmail.value;
+        const inputSchoolPhoneNumber = e.target.schoolPhoneNumber.value;
+        const inputSchoolAddress = e.target.schoolAddress.value;
+        if (inputSchoolId && inputSchoolName && inputSchoolEmail && inputSchoolPhoneNumber) {
             if (
-                inputLastName === lastName &&
-                inputFirstName === firstName &&
-                inputMiddleName === middleName &&
-                inputPhoneNumber === phoneNumber
+                inputSchoolId === verifyLoginData?.schoolId?.schoolId &&
+                inputSchoolName === verifyLoginData?.schoolId?.schoolName &&
+                inputSchoolEmail === verifyLoginData?.schoolId?.schoolEmail &&
+                inputSchoolPhoneNumber === verifyLoginData?.schoolId?.schoolPhoneNumber &&
+                inputSchoolAddress === verifyLoginData?.schoolId?.schoolAddress
             ) {
                 toast.error("No changes has been made", {
-                    id: "editUser",
+                    id: "editSchool",
                     duration: 3000
                 });
             } else {
-                triggerUpdateUser([{
-                    lastName: inputLastName,
-                    firstName: inputFirstName,
-                    middleName: inputMiddleName,
-                    phoneNumber: inputPhoneNumber
-                }, verifyLoginData._id], { onSuccess: () => { refetchVerifyLogin; setIsEditUserSuccess(true) } }
+                triggerUpdateSchool([{
+                    schoolId: inputSchoolId,
+                    schoolName: inputSchoolName,
+                    schoolEmail: inputSchoolEmail,
+                    schoolPhoneNuumber: inputSchoolPhoneNumber,
+                    schoolAddress: inputSchoolAddress
+                }, verifyLoginData?.schoolId?._id], { onSuccess: () => { refetchVerifyLogin; setIsEditSchoolSuccess(true) } }
                 )
             }
+        } else {
+            toast.error("Required fields can not be empty", {
+                id: "editSchool",
+                duration: 3000
+            });
         }
     }
 
-    const setIsEditUserActive = (e) => {
-        isEditUserActive(e)
+    const setIsEditSchoolActive = (e) => {
+        isEditSchoolActive(e)
     }
 
     return (
@@ -64,76 +54,89 @@ const EditUser = ({ isEditUserActive }) => {
             <form id="editUserForm" onSubmit={_submitHandler} >
                 <div className="flex-col max-w-2xl mt-16 bg-white border rounded-lg shadow ring-1 ring-black ring-opacity-5">
                     <label htmlFor="lastName" className="block px-6 py-4 font-semibold bg-white border-b">
-                        Edit User Information
+                        Edit School Information
                     </label>
                     <div className='flex flex-row'>
                         <ul role="list" className="w-64 divide-y divide-gray-200 bg-slate-100">
                             <li className="px-6 py-4">
-                                Last name
+                                School ID
                             </li>
                             <li className="px-6 py-4">
-                                First name
+                                Name
                             </li>
                             <li className="px-6 py-4">
-                                Middle name
+                                Email
                             </li>
                             <li className="px-6 py-4">
                                 Mobile Number
+                            </li>
+                            <li className="px-6 py-4">
+                                Full Address
                             </li>
                         </ul>
                         <ul role="list" className="w-full divide-y divide-gray-200">
                             <li className="px-6 py-4">
                                 <input
                                     type="text"
-                                    name="lastName"
-                                    id="lastName"
+                                    name="schoolId"
+                                    id="schoolId"
                                     required
                                     className="w-full px-0 py-0 border-0 border-transparent focus:border-indigo-500 focus:ring-0 sm:text-sm"
-                                    defaultValue={lastName}
+                                    defaultValue={verifyLoginData?.schoolId?.schoolId}
                                 />
                             </li>
                             <li className="px-6 py-4">
                                 <input
                                     type="text"
-                                    name="firstName"
-                                    id="firstName"
+                                    name="schoolName"
+                                    id="schoolName"
                                     required
                                     className="w-full px-0 py-0 border-0 border-transparent focus:border-indigo-500 focus:ring-0 sm:text-sm"
-                                    defaultValue={firstName}
+                                    defaultValue={verifyLoginData?.schoolId?.schoolName}
                                 />
                             </li>
                             <li className="px-6 py-4">
                                 <input
                                     type="text"
-                                    name="middleName"
-                                    id="middleName"
+                                    name="schoolEmail"
+                                    id="schoolEmail"
                                     className="w-full px-0 py-0 border-0 border-transparent focus:border-indigo-500 focus:ring-0 sm:text-sm"
-                                    defaultValue={middleName}
+                                    defaultValue={verifyLoginData?.schoolId?.schoolEmail}
                                 />
                             </li>
                             <li className="px-6 py-4">
                                 <input
                                     type="text"
-                                    name="phoneNumber"
-                                    id="phoneNumber"
+                                    name="schoolPhoneNumber"
+                                    id="schoolPhoneNumber"
                                     maxLength={11}
                                     required
                                     className="w-full px-0 py-0 border-0 border-transparent focus:border-indigo-500 focus:ring-0 sm:text-sm"
-                                    defaultValue={phoneNumber}
+                                    defaultValue={verifyLoginData?.schoolId?.schoolPhoneNumber}
                                 />
                             </li>
+                            <li className="px-6 py-4 ">
+                                <input
+                                    type="text"
+                                    name="schoolAddress"
+                                    id="schoolAddress"
+                                    className="w-full px-0 py-0 border-0 border-transparent focus:border-indigo-500 focus:ring-0 sm:text-sm"
+                                    defaultValue={verifyLoginData?.schoolId?.schoolAddress}
+                                />
+                            </li>
+
                         </ul>
                     </div>
                 </div>
                 <div className='flex justify-end max-w-2xl mt-3'>
                     <button
-                        onClick={() => { setIsEditUserActive(false); setIsEditUserSuccess(false) }}
+                        onClick={() => { setIsEditSchoolActive(false); setIsEditSchoolSuccess(false) }}
                         type="button"
                         className="inline-flex items-center px-3 py-2 mr-2 text-sm font-medium leading-4 text-white bg-gray-500 border border-transparent rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2"
                     >
-                        {isEditUserSuccess ? 'Back' : 'Cancel'}
+                        {isEditSchoolSuccess ? 'Back' : 'Cancel'}
                     </button>
-                    {isEditUserSuccess ? null : <button
+                    {isEditSchoolSuccess ? null : <button
                         type="submit"
                         className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2"
                     >
@@ -146,4 +149,4 @@ const EditUser = ({ isEditUserActive }) => {
     )
 }
 
-export default EditUser
+export default EditverifyLoginData

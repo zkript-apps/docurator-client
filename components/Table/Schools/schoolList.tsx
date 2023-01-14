@@ -74,7 +74,7 @@ const SchoolsList = () => {
                 <button
                     disabled={schoolIdWithAccess?.includes(row?.original?._id?.toString()) ? true : false}
                     onClick={() => sendData(row.original._id)}
-                    className={schoolIdWithAccess.includes(row?.original?._id?.toString()) ?
+                    className={schoolIdWithAccess?.includes(row?.original?._id?.toString()) ?
                         "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-gray-500 border border-transparent rounded-md shadow-sm focus:outline-none" : "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-indigo-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2"}
                 >
                     Send Records

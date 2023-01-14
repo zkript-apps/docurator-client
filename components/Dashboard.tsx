@@ -19,6 +19,7 @@ import useAuth from '../hooks/useAuth';
 import Settings from './Settings/Settings';
 import Developer from './Developer';
 import Form138List from './Table/Form138/form138List';
+import PendingStudentList from './Table/PendingStudentList/pendingStudentList';
 
 const Dashboard = ({ currentPage }: any) => {
     const { verifyLoginData } = useAuth();
@@ -40,6 +41,7 @@ const Dashboard = ({ currentPage }: any) => {
 
     const adminNavigation = [
         { name: 'Students', href: '/students', icon: AcademicCapIcon, current: currentPage === "Students" ? true : false },
+        { name: 'Pending Students', href: '/pending-students', icon: AcademicCapIcon, current: currentPage === "Pending Students" ? true : false },
         { name: 'Form 137', href: '/form137', icon: DocumentTextIcon, current: currentPage === "Form 137" ? true : false },
         { name: 'Form 138', href: '/form138', icon: DocumentTextIcon, current: currentPage === "Form 138" ? true : false },
         { name: 'Good Moral Certificates', href: '/good-moral-certificates', icon: DocumentTextIcon, current: currentPage === "Good Moral Certificates" ? true : false },
@@ -228,6 +230,7 @@ const Dashboard = ({ currentPage }: any) => {
                     <main>
                         <div className="py-6">
                             {currentPage === "Students" ? <StudentList /> : null}
+                            {currentPage === "Pending Students" ? <PendingStudentList /> : null}
                             {currentPage === "Birth Certificates" ? <BirthCertificatesList /> : null}
                             {currentPage === "Form 137" ? <Form137List /> : null}
                             {currentPage === "Form 138" ? <Form138List /> : null}
