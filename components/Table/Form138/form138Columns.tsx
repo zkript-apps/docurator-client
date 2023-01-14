@@ -13,7 +13,7 @@ export const FORM138_COLUMNS = [
     },
     {
         Header: "Last Name",
-        accessor: "studentId.userId.lastName",
+        accessor: "studentId.lastName",
         Cell: ({ value }) => {
             if (value) {
                 return value
@@ -24,7 +24,7 @@ export const FORM138_COLUMNS = [
     },
     {
         Header: "First Name",
-        accessor: "studentId.userId.firstName",
+        accessor: "studentId.firstName",
         Cell: ({ value }) => {
             if (value) {
                 return value

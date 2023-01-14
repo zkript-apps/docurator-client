@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import useAuth from '../../hooks/useAuth';
 
-const DisplayUser = ({ fullName, email, phoneNumber, isChangePasswordActive, isEditUserActive }) => {
+const DisplayUser = ({ isChangePasswordActive, isEditUserActive }) => {
+    const { verifyLoginData, isVerifyLoginLoading, refetchVerifyLogin } = useAuth();
+    const [lastName, setLastName] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [middleName, setMiddleName] = useState("")
+    const [fullName, setFullName] = useState("")
+    const [email, setEmail] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
+
+    useEffect(() => {
+        refetchVerifyLogin
+    }, [refetchVerifyLogin, isEditUserActive])
+
     const setIsChangePasswordActive = (e) => {
         isChangePasswordActive(e)
     }
@@ -8,6 +21,22 @@ const DisplayUser = ({ fullName, email, phoneNumber, isChangePasswordActive, isE
     const setIsEditUserActive = (e) => {
         isEditUserActive(e)
     }
+
+    useEffect(() => {
+        if (verifyLoginData) {
+            setLastName(verifyLoginData?.lastName)
+            setFirstName(verifyLoginData?.firstName)
+            setMiddleName(verifyLoginData?.middleName)
+            setEmail(verifyLoginData?.email)
+            setPhoneNumber(verifyLoginData?.phoneNumber)
+
+            if (middleName) {
+                setFullName(firstName + ' ' + middleName.slice(0, 1) + '. ' + lastName)
+            } else {
+                setFullName(firstName + ' ' + lastName)
+            }
+        }
+    }, [firstName, lastName, middleName, verifyLoginData])
 
     return (
         <div className="max-w-2xl mt-16 bg-white border rounded-lg shadow ring-1 ring-black ring-opacity-5">
@@ -33,7 +62,7 @@ const DisplayUser = ({ fullName, email, phoneNumber, isChangePasswordActive, isE
                     <li className="flex justify-end px-6 py-4">
                         <a onClick={() => setIsEditUserActive(true)} className="font-medium text-indigo-500 underline cursor-pointer hover:text-indigo-700">Edit</a>
                     </li>
-                    <li className="px-6 py-4">
+                    <li className="px-6 py-4 capitalize">
                         {fullName ? fullName : '...'}
                     </li>
                     <li className="px-6 py-4">
