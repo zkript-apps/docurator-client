@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
 import useCreateAccount from '../../hooks/useCreateAccount';
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/20/solid'
-import { ArrowLeftIcon, ArrowUpTrayIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+
 
 const AdminForm: NextPage = () => {
     const [isValid, setIsValid] = useState(false);
@@ -36,31 +37,6 @@ const AdminForm: NextPage = () => {
             setIsUnderstood(!isUnderstood)
         }
     }
-
-    // const handleFileUpload = (event) => {
-    //     const files = event.target.files;
-
-    //     // for (let i = 0; i < files.length; i++) {
-    //     //     const file = files[i];
-    //     //     let reader = new FileReader();
-    //     //     new Compressor(file, {
-    //     //         quality: 0.8,
-    //     //         // The compression process is asynchronous,
-    //     //         // which means you have to access the `result` in the `success` hook function.
-    //     //         success(result) {
-    //     //             reader.readAsDataURL(result)
-    //     //             reader.onload = (e) => {
-    //     //                 const encodedFile = reader.result;
-    //     //                 setFileBase64(encodedFile)
-    //     //                 console.log(encodedFile)
-    //     //             };
-    //     //         },
-    //     //         error(err) {
-    //     //             console.log(err.message);
-    //     //         },
-    //     //     });
-    //     // }
-    // }
 
     const _submitHandler = (e) => {
         e.preventDefault();
@@ -333,21 +309,6 @@ const AdminForm: NextPage = () => {
                                         <option value="Public">Public</option>
                                     </select>
                                 </div>
-                                {/* <label htmlFor="email" className="block mt-4 text-sm font-medium text-gray-700">
-                                    Upload a scanned document of the School's GPR-4 or present copy of the Transfer Certificate of Title (TCT)
-                                </label>
-                                <div>
-                                    <input
-                                        id="files"
-                                        name="files"
-                                        type="file"
-                                        onChange={(e) => setFileBase64(e.target.value)}
-                                        required
-                                        accept=".png,.jpg,.jpeg,.pdf"
-                                        className='flex justify-center w-full gap-4 p-8 text-lg font-medium border-2 border-gray-500 border-dashed rounded-md shadow-sm hover:text-indigo-500 hover:border-indigo-500 focus:outline-none focus:ring-0 hover:cursor-pointer'
-                                    />
-                                </div> */}
-
                             </div>}
 
                         {!isSchoolInfoComplete ? <>
@@ -365,7 +326,7 @@ const AdminForm: NextPage = () => {
                                     </label>
 
                                 </div>
-                                <p className="mb-4 text-sm text-gray-500">By checking this, you are giving us permission to process these information you have entered.</p>
+                                <p className="mb-4 text-sm text-gray-500">By checking this, you are giving us permission to process these information you have entered.<strong> Further instructions will be sent to your email</strong>.</p>
                                 <div>
                                     <button
                                         disabled={!isUnderstood}

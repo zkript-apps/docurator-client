@@ -2,7 +2,7 @@
 export const FORM137_COLUMNS = [
     {
         Header: "LRN",
-        accessor: "lrn",
+        accessor: "studentId.lrn",
         Cell: ({ value }) => {
             if (value) {
                 return value
