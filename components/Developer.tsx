@@ -28,11 +28,11 @@ const Developer = () => {
             </h2>
             <div className="max-w-4xl mt-16 overflow-hidden bg-white shadow sm:rounded-lg ring-1 ring-black ring-opacity-5">
                 <div className="px-4 py-5 sm:px-6">
-                    <h3 className="text-lg font-medium leading-6 text-gray-900">API Keys</h3>
+                    <h3 className="text-lg font-medium leading-6 text-gray-900">API Key</h3>
                 </div>
                 <div className="border-t border-gray-200">
                     <dl>
-                        <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-5 sm:gap-4 sm:px-6">
+                        {/* <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-5 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Public Key</dt>
                             <dd className="mt-1 text-sm text-gray-900 truncate sm:col-span-3 sm:mt-0">{publicKey}</dd>
                             <dd className="mt-1 text-sm text-gray-900 sm:col-span-1 sm:mt-0 justify-self-end"><ClipboardDocumentIcon
@@ -41,7 +41,7 @@ const Developer = () => {
                                 title={"Copy text"}
                                 aria-hidden="true"
                             /></dd>
-                        </div>
+                        </div> */}
                         <div className="px-4 py-5 bg-white border-t sm:grid sm:grid-cols-5 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500 ">Private Key</dt>
                             <dd className="mt-1 text-sm text-gray-900 truncate sm:col-span-3 sm:mt-0">{privateKey}</dd>
@@ -55,6 +55,12 @@ const Developer = () => {
                     </dl>
                 </div>
             </div>
+            <div className='mt-12'>
+                <a href='https://github.com/zkript-apps/docurator' target={"_blank"} className="text-xl font-semibold text-gray-900 hover:underline text-sky-500">
+                    Read the documentation here
+                </a>
+            </div>
+
         </div>
     )
 }

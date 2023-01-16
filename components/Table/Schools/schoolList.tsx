@@ -21,6 +21,7 @@ const SchoolsList = () => {
             setSchools(schoolsData)
             setAllClaimAccess(allClaimAccessData?.items)
         }
+        refetchSchools
     }, [verifyLoginData, schools, schoolsData, refetchSchools, allClaimAccessData]);
 
     const schoolsWithAccess = allClaimAccess?.filter((school) => school?.studentId?._id === studentInformation?._id)
@@ -30,8 +31,8 @@ const SchoolsList = () => {
         const schoolId = e
         triggerAddClaimAccess({
             lrn,
-            schoolId
-        }, { onSuccess: () => { document?.getElementById("claimAccessForm")?.reset() } })
+            schoolId,
+        }, { onSuccess: () => { document?.getElementById("claimAccessForm")?.reset(); refetchSchools } })
     }
 
     const SCHOOLS_COLUMNS = [
