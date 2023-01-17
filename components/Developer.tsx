@@ -56,7 +56,7 @@ const Developer = () => {
                 </div>
             </div>
             <div className='mt-12'>
-                <a href='https://github.com/zkript-apps/docurator' target={"_blank"} className="text-xl font-semibold text-gray-900 hover:underline text-sky-500" rel="noreferrer">
+                <a href='https://github.com/zkript-apps/docurator/blob/main/README.md' target={"_blank"} className="text-xl font-semibold text-gray-900 hover:underline text-sky-500" rel="noreferrer">
                     Read the documentation here
                 </a>
             </div>
