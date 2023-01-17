@@ -1,4 +1,3 @@
-import { Row } from "react-bootstrap";
 
 export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
