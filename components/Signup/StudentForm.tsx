@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/20/solid'
 
 const StudentForm: NextPage = () => {
-    const inputElement = useRef(null)
+    const inputElement = useRef<HTMLFormElement>(null)
     const { triggerCreateAccount, isCreateAccountLoading } = useCreateAccount()
     const [isPasswordVisible, setIsPasswordVisible] = useState(true)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(true)
@@ -18,7 +18,7 @@ const StudentForm: NextPage = () => {
         }
     }, []);
 
-    const _submitHandler = (e) => {
+    const _submitHandler = (e: any) => {
         e.preventDefault();
         const lastName = e.target.lastName.value
         const firstName = e.target.firstName.value

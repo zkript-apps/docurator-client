@@ -1,9 +1,10 @@
 import StudentDashboard from "../components/StudentDashboard"
 
-const ClaimRecord = () => {
+const ClaimStudentRecords = () => {
     return (
         <StudentDashboard currentPage={"Claim Student Records"} />
     )
 }
 
-export default ClaimRecord
+ClaimStudentRecords.rolesAllowed = "Admin"
+export default ClaimStudentRecords

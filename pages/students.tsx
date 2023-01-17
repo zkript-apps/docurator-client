@@ -5,5 +5,5 @@ const Students = () => {
         <Dashboard currentPage={"Students"} />
     )
 }
-
+Students.rolesAllowed = "Admin"
 export default Students

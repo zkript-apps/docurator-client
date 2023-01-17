@@ -5,7 +5,7 @@ import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ArrowDownIcon, ArrowUpIc
 import { GlobalFilter } from "./GlobalFilter";
 
 
-const Table = ({ tableData, tableColumns }) => {
+const Table = ({ tableData, tableColumns }: any) => {
   const [newTableData, setNewTableData] = useState([])
   const [newTableColumns, setNewTableColumns] = useState([])
 

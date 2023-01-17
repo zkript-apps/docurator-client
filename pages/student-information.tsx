@@ -7,4 +7,5 @@ const StudentsInformation = () => {
     )
 }
 
+StudentsInformation.rolesAllowed = "Students"
 export default StudentsInformation

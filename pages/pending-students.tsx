@@ -1,9 +1,10 @@
 import Dashboard from "../components/Dashboard"
 
-const Students = () => {
+const PendingStudents = () => {
     return (
         <Dashboard currentPage={"Pending Students"} />
     )
 }
 
-export default Students
+PendingStudents.rolesAllowed = "Admin"
+export default PendingStudents

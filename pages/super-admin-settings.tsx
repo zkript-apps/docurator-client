@@ -1,9 +1,10 @@
 import SuperAdminDashboard from "../components/SuperAdminDashboard"
 
-const Settings = () => {
+const SuperAdminSettings = () => {
     return (
         <SuperAdminDashboard currentPage='Settings' />
     )
 }
 
-export default Settings
+SuperAdminSettings.rolesAllowed = "Super Admin"
+export default SuperAdminSettings

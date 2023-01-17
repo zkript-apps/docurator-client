@@ -18,13 +18,13 @@ const PendingStudentList = () => {
         }
     }, [verifyLoginData, pendingClaimAccessData]);
 
-    const acceptStudent = (studentId) => {
+    const acceptStudent = (studentId: any) => {
         triggerAcceptStudent([{
             isAccepted: true,
-        }, studentId], { onSuccess: () => refetchPendingClaimAccess })
+        }, studentId, { onSuccess: () => refetchPendingClaimAccess }])
     }
 
-    const rejectStudent = (studentId) => {
+    const rejectStudent = (studentId: any) => {
         triggerRejectStudent(studentId), { onSuccess: () => refetchPendingClaimAccess }
     }
 
@@ -32,7 +32,7 @@ const PendingStudentList = () => {
         {
             Header: "LRN",
             accessor: "studentId.lrn",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -43,7 +43,7 @@ const PendingStudentList = () => {
         {
             Header: "Last Name",
             accessor: "studentId.lastName",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -54,7 +54,7 @@ const PendingStudentList = () => {
         {
             Header: "First Name",
             accessor: "studentId.firstName",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -65,7 +65,7 @@ const PendingStudentList = () => {
         {
             Header: "Email",
             accessor: "studentId.userId.email",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -76,7 +76,7 @@ const PendingStudentList = () => {
         {
             Header: "Date of Birth (dd/mm/yyyy)",
             accessor: "studentId.dateOfBirth",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return format(new Date(value), "dd/MM/yyyy");
                 } else {
@@ -87,7 +87,7 @@ const PendingStudentList = () => {
         },
         {
             Header: 'Action',
-            Cell: ({ row }) => (
+            Cell: ({ row }: any) => (
                 <div className="flex gap-4">
                     <button
                         onClick={() => acceptStudent(row.original._id)}

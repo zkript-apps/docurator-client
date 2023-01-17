@@ -6,4 +6,5 @@ const Form137 = () => {
     )
 }
 
+Form137.rolesAllowed = "Admin"
 export default Form137

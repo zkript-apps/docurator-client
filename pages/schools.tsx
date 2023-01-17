@@ -6,4 +6,5 @@ const Schools = () => {
     )
 }
 
+Schools.rolesAllowed = "Admin"
 export default Schools

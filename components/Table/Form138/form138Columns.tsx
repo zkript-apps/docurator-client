@@ -3,7 +3,7 @@ export const FORM138_COLUMNS = [
     {
         Header: "LRN",
         accessor: "lrn",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -14,7 +14,7 @@ export const FORM138_COLUMNS = [
     {
         Header: "Last Name",
         accessor: "studentId.lastName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -25,7 +25,7 @@ export const FORM138_COLUMNS = [
     {
         Header: "First Name",
         accessor: "studentId.firstName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -36,7 +36,7 @@ export const FORM138_COLUMNS = [
     {
         Header: "School Year",
         accessor: "academicYear",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value.from + " - " + value.to
             } else {
@@ -47,7 +47,7 @@ export const FORM138_COLUMNS = [
     {
         Header: "Teacher",
         accessor: "teacher",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -58,7 +58,7 @@ export const FORM138_COLUMNS = [
     {
         Header: "Principal",
         accessor: "principal",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {

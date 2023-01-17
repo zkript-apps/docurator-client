@@ -4,7 +4,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
         Header: "lrn",
         accessor: "lrn",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -15,7 +15,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
         Header: "Last Name",
         accessor: "lastName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -26,7 +26,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
         Header: "First Name",
         accessor: "firstName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -37,7 +37,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
         Header: "School Name",
         accessor: "schoolName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -49,7 +49,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
         Header: "Signed by",
         accessor: "signedBy",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -61,7 +61,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
         Header: "Signee Position",
         accessor: "position",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -73,7 +73,7 @@ export const GOOD_MORAL_CERTIFICATES_COLUMNS = [
     {
         Header: "School Year",
         accessor: "academicYear",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value.from + " - " + value.to
             } else {

@@ -23,7 +23,7 @@ export const StudentInformation = () => {
                 <div className="mx-auto lg:max-w-6xl md:max-w-2xl sm:max-w-xl lg:px-8 md:px-4 sm:px-2">
                     <div className="overflow-hidden bg-white shadow sm:rounded-lg">
                         <div className="px-4 py-5 sm:px-6">
-                            <h3 className="text-lg font-medium leading-6 text-gray-900">Student's Information</h3>
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">Student&apos;s Information</h3>
                             <p className="max-w-2xl mt-1 text-sm text-gray-500">Personal details and contacts</p>
                         </div>
                         <div className="border-t border-gray-200">
@@ -69,31 +69,31 @@ export const StudentInformation = () => {
                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> {studentInformation?.userId.email ? studentInformation?.userId.email : "----"} </dd>
                                 </div>
                                 <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Mother's Name</dt>
+                                    <dt className="text-sm font-medium text-gray-500">Mother&apos;s Name</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> {studentInformation?.mothersName ? studentInformation?.mothersName : "----"} </dd>
                                 </div>
                                 <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Mother's Occupation</dt>
+                                    <dt className="text-sm font-medium text-gray-500">Mother&apos;s Occupation</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> {studentInformation?.mothersOccupation ? studentInformation?.mothersOccupation : "----"} </dd>
                                 </div>
                                 <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Father's Name</dt>
+                                    <dt className="text-sm font-medium text-gray-500">Father&apos;s Name</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> {studentInformation?.fathersName ? studentInformation?.fathersName : "----"} </dd>
                                 </div>
                                 <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Father's Occupation</dt>
+                                    <dt className="text-sm font-medium text-gray-500">Father&apos;s Occupation</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> {studentInformation?.fathersOccupation ? studentInformation?.fathersOccupation : "----"} </dd>
                                 </div>
                                 <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Guardian's Name</dt>
+                                    <dt className="text-sm font-medium text-gray-500">Guardian&apos;s Name</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> {studentInformation?.guardiansName ? studentInformation?.guardiansName : "----"} </dd>
                                 </div>
                                 <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Guardian's Occupation</dt>
+                                    <dt className="text-sm font-medium text-gray-500">Guardian&apos;s Occupation</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> {studentInformation?.guardiansOccupation ? studentInformation?.guardiansOccupation : "----"} </dd>
                                 </div>
                                 <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Guardian's Phone Number</dt>
+                                    <dt className="text-sm font-medium text-gray-500">Guardian&apos;s Phone Number</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> {studentInformation?.guardiansPhoneNumber ? studentInformation?.guardiansPhoneNumber : "----"} </dd>
                                 </div>
 

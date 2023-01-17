@@ -3,7 +3,7 @@ export const FORM137_COLUMNS = [
     {
         Header: "LRN",
         accessor: "studentId.lrn",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -14,7 +14,7 @@ export const FORM137_COLUMNS = [
     {
         Header: "Education Level",
         accessor: "educationLevel",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -25,7 +25,7 @@ export const FORM137_COLUMNS = [
     {
         Header: "Status of Applicant",
         accessor: "studentId.statusOfApplicant",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -36,7 +36,7 @@ export const FORM137_COLUMNS = [
     {
         Header: "Email",
         accessor: "studentId.email",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -47,7 +47,7 @@ export const FORM137_COLUMNS = [
     {
         Header: "Mobile Number",
         accessor: "studentId.phoneNumber",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -58,7 +58,7 @@ export const FORM137_COLUMNS = [
     {
         Header: "School Name",
         accessor: "studentId.schoolName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {

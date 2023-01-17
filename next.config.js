@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const webpack = require("webpack");
 const { parsed: envVars } = require("dotenv").config({
-  path: process.env.NODE_ENV === "development" ? `./.env` : `../.env`,
+  path: process.env.NODE_ENV === "production" ? `./.env` : `../.env`,
 });
 const nextConfig = {
   reactStrictMode: true,

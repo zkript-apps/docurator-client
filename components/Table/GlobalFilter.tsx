@@ -1,6 +1,6 @@
 import React from "react";
 
-export const GlobalFilter = ({ filter, setFilter }) => {
+export const GlobalFilter = ({ filter, setFilter }: any) => {
 
     return (
         <div className="flex w-full mx-auto mt-5 text-gray-400 focus-within:text-gray-600 drop-shadow max-lg:px-4 ">

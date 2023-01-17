@@ -1,19 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
-import { useRef, useEffect, useState } from "react";
+import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 
 const Login = () => {
     const router = useRouter();
-    const inputElement = useRef(null);
 
     const { triggerAuthenticateUser, isAuthenticateUserLoading } = useAuth();
-    useEffect(() => {
-        if (inputElement.current) {
-            inputElement.current.focus();
-        }
-    }, []);
+
 
     useEffect(() => {
         if (Cookies.get('l_auth')) {
@@ -21,7 +17,7 @@ const Login = () => {
         }
     }, []);
 
-    const _submitHandler = (e) => {
+    const _submitHandler = (e: any) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;

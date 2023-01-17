@@ -13,11 +13,11 @@ const SettingsList = () => {
         refetchVerifyLogin
     }, [refetchVerifyLogin, verifyLoginData, isEditUserActive])
 
-    const changePasswordProps = (data) => {
+    const changePasswordProps = (data: any) => {
         setIsChangePasswordActive(data)
     }
 
-    const editUserProps = (data) => {
+    const editUserProps = (data: any) => {
         setIsEditUserActive(data)
     }
 

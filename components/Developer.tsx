@@ -13,7 +13,7 @@ const Developer = () => {
         }
     }, [privateKey, publicKey, verifyLoginData?.privateKey, verifyLoginData?.publicKey])
 
-    const copyToast = (e) => {
+    const copyToast = (e: any) => {
         toast(`Copied ${e}`, {
             id: "copyToClipboard",
             duration: 3000,
@@ -56,7 +56,7 @@ const Developer = () => {
                 </div>
             </div>
             <div className='mt-12'>
-                <a href='https://github.com/zkript-apps/docurator' target={"_blank"} className="text-xl font-semibold text-gray-900 hover:underline text-sky-500">
+                <a href='https://github.com/zkript-apps/docurator' target={"_blank"} className="text-xl font-semibold text-gray-900 hover:underline text-sky-500" rel="noreferrer">
                     Read the documentation here
                 </a>
             </div>

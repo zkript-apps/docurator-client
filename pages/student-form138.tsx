@@ -7,4 +7,5 @@ const StudentsForm138 = () => {
     )
 }
 
+StudentsForm138.rolesAllowed = "Students"
 export default StudentsForm138

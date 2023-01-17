@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { rolesAllowed }: any = Component
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />

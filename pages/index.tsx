@@ -6,5 +6,4 @@ const Index = () => {
   )
 }
 
-Index.rolesAllowed = "Admin"
 export default Index

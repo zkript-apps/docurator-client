@@ -6,4 +6,5 @@ const Settings = () => {
     )
 }
 
+Settings.rolesAllowed = "Admin"
 export default Settings

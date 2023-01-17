@@ -5,14 +5,14 @@ import { useEffect } from "react";
 
 const useVerifyaccount = () => {
   const { mutate: triggerVerifyAccount, isLoading: isVerifyAccountLoading } =
-    useMutation(async (data) => await updateUser(data[0], data[1]), {
+    useMutation(async (data: any[]) => await updateUser(data[0], data[1]), {
       onSuccess: () => {
         toast.success("Successfully Verified the School Account", {
           id: "verifyAccount",
           duration: 3000,
         });
       },
-      onError: (err) => {
+      onError: (err: any) => {
         toast.error(err, {
           id: "verifyAccount",
           duration: 5000,
@@ -30,7 +30,7 @@ const useVerifyaccount = () => {
   const {
     mutate: triggerCancelVerification,
     isLoading: isCancelVerificationLoading,
-  } = useMutation(async (data) => await deleteUser(data), {
+  } = useMutation(async (data: any) => await deleteUser(data), {
     onSuccess: () => {
       toast.success(
         "The verification has been cancelled. The account was deleted",
@@ -40,7 +40,7 @@ const useVerifyaccount = () => {
         }
       );
     },
-    onError: (err) => {
+    onError: (err: any) => {
       toast.error(err, {
         id: "verifyAccount",
         duration: 5000,

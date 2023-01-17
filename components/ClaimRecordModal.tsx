@@ -5,7 +5,7 @@ import useClaimStudentRecord from '../hooks/useClaimStudentRecord'
 export default function ClaimRecordModal() {
     const [open, setOpen] = useState(true)
     const { triggerClaimStudentRecord } = useClaimStudentRecord()
-    const _submitHandler = (e) => {
+    const _submitHandler = (e: any) => {
         e.preventDefault();
         const lrn = e.target.lrn.value
 
@@ -40,7 +40,7 @@ export default function ClaimRecordModal() {
                         >
                             <Dialog.Panel className="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                                 <h2 className="text-2xl font-semibold text-gray-900">
-                                    Claim your records (Personal Information and Learner's Permanent Records)
+                                    Claim your records (Personal Information and Learner&apos;s Permanent Records)
                                 </h2>
                                 <div className="mt-8 mb-4">
                                     <form id="claimAccessForm" onSubmit={_submitHandler}>

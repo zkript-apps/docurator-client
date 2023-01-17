@@ -9,7 +9,7 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 const AdminForm: NextPage = () => {
     const [isValid, setIsValid] = useState(false);
     const inputElement = useRef(null)
-    const formRef = useRef(null)
+    const formRef = useRef<HTMLFormElement>(null)
     const { triggerCreateAccount, isCreateAccountLoading } = useCreateAccount()
     const [isPasswordVisible, setIsPasswordVisible] = useState(true)
     const [schoolIdInput, setSchoolIdInput] = useState("")
@@ -22,14 +22,8 @@ const AdminForm: NextPage = () => {
     const [isUnderstood, setIsUnderstood] = useState(false)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(true)
 
-    useEffect(() => {
-        if (inputElement.current) {
-            inputElement.current.focus()
-        }
-    }, []);
-
     const continueHandler = () => {
-        setIsValid(formRef?.current?.checkValidity());
+        setIsValid((formRef.current as HTMLFormElement)?.checkValidity());
         if (!isValid) {
             formRef?.current?.reportValidity()
         } else {
@@ -38,7 +32,7 @@ const AdminForm: NextPage = () => {
         }
     }
 
-    const _submitHandler = (e) => {
+    const _submitHandler = (e: any) => {
         e.preventDefault();
         const lastName = e.target.lastName?.value
         const firstName = e.target.firstName?.value

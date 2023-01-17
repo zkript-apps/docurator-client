@@ -20,13 +20,13 @@ const VerifyAccountList = () => {
         }
     }, [verifyLoginData, unverifiedAccountsData, refetchUnverifiedAccounts]);
 
-    const verifyAccount = (accountId) => {
+    const verifyAccount = (accountId: any) => {
         triggerVerifyAccount([{
             isVerified: true,
         }, accountId])
     }
 
-    const cancelVerification = (accountId) => {
+    const cancelVerification = (accountId: any) => {
         triggerCancelVerification(accountId, { onSuccess: () => refetchUnverifiedAccounts() })
     }
 
@@ -34,7 +34,7 @@ const VerifyAccountList = () => {
         {
             Header: "School Name",
             accessor: "schoolId.schoolName",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -45,7 +45,7 @@ const VerifyAccountList = () => {
         {
             Header: "Email",
             accessor: "schoolId.schoolEmail",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -56,7 +56,7 @@ const VerifyAccountList = () => {
         {
             Header: "Mobile Number",
             accessor: "schoolId.schoolPhoneNumber",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -66,7 +66,7 @@ const VerifyAccountList = () => {
         },
         {
             Header: 'Action',
-            Cell: ({ row }) => (
+            Cell: ({ row }: any) => (
                 <div className="flex gap-4">
                     <button
                         disabled={row.original._id === "6397e78ad4c2d6ff826c356f" ? true : false}

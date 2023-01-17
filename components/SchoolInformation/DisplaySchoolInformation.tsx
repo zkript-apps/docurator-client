@@ -6,11 +6,7 @@ const DisplaySchoolInformation = () => {
     const { verifyLoginData, refetchVerifyLogin } = useAuth();
     const [isEditSchoolActive, setIsEditSchoolActive] = useState(false)
 
-    useEffect(() => {
-        refetchVerifyLogin
-    }, [isEditSchoolActive, refetchVerifyLogin])
-
-    const editSchoolProps = (data) => {
+    const editSchoolProps = (data: any) => {
         setIsEditSchoolActive(data)
     }
 

@@ -4,7 +4,7 @@ import { EyeIcon, EyeSlashIcon } from '@heroicons/react/20/solid'
 import toast from 'react-hot-toast';
 import useUser from '../../hooks/useUser';
 
-const UpdatePassword = ({ isChangePasswordActive }) => {
+const UpdatePassword = ({ isChangePasswordActive }: any) => {
     const { verifyLoginData } = useAuth();
     const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false)
     const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false)
@@ -13,7 +13,7 @@ const UpdatePassword = ({ isChangePasswordActive }) => {
     const { triggerUpdateUserPassword } = useUser()
 
 
-    const _submitHandler = (e) => {
+    const _submitHandler = (e: any) => {
         e.preventDefault();
         const oldPassword = e.target.oldPassword.value;
         const newPassword = e.target.newPassword.value;
@@ -21,7 +21,7 @@ const UpdatePassword = ({ isChangePasswordActive }) => {
         if (oldPassword && newPassword && confirmPassword) {
             if (newPassword === confirmPassword) {
                 triggerUpdateUserPassword([{ oldPassword, newPassword }, verifyLoginData._id],
-                    { onSuccess: () => { document?.getElementById("changePasswordForm")?.reset(); setIsChangePasswordSuccess(true) } })
+                    { onSuccess: () => { setIsChangePasswordSuccess(true); isChangePasswordActive(false) } })
             } else {
                 toast.error("New passwords does not match", {
                     id: "settings",
@@ -31,7 +31,7 @@ const UpdatePassword = ({ isChangePasswordActive }) => {
         }
     }
 
-    const setIsChangePasswordActive = (e) => {
+    const setIsChangePasswordActive = (e: any) => {
         isChangePasswordActive(e)
     }
 
@@ -81,6 +81,8 @@ const UpdatePassword = ({ isChangePasswordActive }) => {
                                     name="newPassword"
                                     id="newPassword"
                                     required
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
                                     className="w-full px-0 py-0 border-0 border-transparent focus:border-indigo-500 focus:ring-0 sm:text-sm"
                                     placeholder={'●●●●●●●●●●●●●'}
                                 />

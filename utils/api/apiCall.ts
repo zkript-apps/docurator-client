@@ -16,7 +16,7 @@ const apiCall = async (
       method === "DELETE" ? params : { ...params, data: body }
     );
     return res.data;
-  } catch (err) {
+  } catch (err: any) {
     throw err.response ? err?.response?.data : err.message;
   }
 };

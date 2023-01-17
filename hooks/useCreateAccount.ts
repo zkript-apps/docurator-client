@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const useCreateAccount = () => {
   const router = useRouter();
   const { mutate: triggerCreateAccount, isLoading: isCreateAccountLoading } =
-    useMutation(async (data) => await createAccount(data), {
+    useMutation(async (data: any) => await createAccount(data), {
       onSuccess: () => {
         toast.success("Your account has been successfully created!", {
           id: "addUser",
@@ -15,7 +15,7 @@ const useCreateAccount = () => {
         });
         router.push("/");
       },
-      onError: (err) => {
+      onError: (err: any) => {
         toast.error(err, {
           id: "addUser",
           duration: 5000,

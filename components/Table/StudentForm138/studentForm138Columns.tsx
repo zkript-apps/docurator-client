@@ -3,7 +3,7 @@ export const STUDENT_FORM138_COLUMNS = [
     {
         Header: "School Year",
         accessor: "academicYear",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value.from + " - " + value.to
             } else {
@@ -14,7 +14,7 @@ export const STUDENT_FORM138_COLUMNS = [
     {
         Header: "Teacher",
         accessor: "teacher",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -25,7 +25,7 @@ export const STUDENT_FORM138_COLUMNS = [
     {
         Header: "Principal",
         accessor: "principal",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
