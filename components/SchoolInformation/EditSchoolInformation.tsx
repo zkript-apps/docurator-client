@@ -3,12 +3,16 @@ import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import useUpateSchool from '../../hooks/useUpdateSchool';
 
-const EditverifyLoginData = ({ isEditSchoolActive }) => {
+const EditverifyLoginData = ({ isEditSchoolActive }: any) => {
     const { triggerUpdateSchool, isUpdateSchoolLoading } = useUpateSchool()
     const { verifyLoginData, refetchVerifyLogin } = useAuth();
     const [isEditSchoolSuccess, setIsEditSchoolSuccess] = useState(false)
 
-    const _submitHandler = (e) => {
+    useEffect(() => {
+        refetchVerifyLogin
+    }, [refetchVerifyLogin, isEditSchoolActive])
+
+    const _submitHandler = (e: any) => {
         e.preventDefault()
         const inputSchoolId = e.target.schoolId.value;
         const inputSchoolName = e.target.schoolName.value;
@@ -45,7 +49,7 @@ const EditverifyLoginData = ({ isEditSchoolActive }) => {
         }
     }
 
-    const setIsEditSchoolActive = (e) => {
+    const setIsEditSchoolActive = (e: any) => {
         isEditSchoolActive(e)
     }
 

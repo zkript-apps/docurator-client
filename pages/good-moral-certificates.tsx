@@ -6,4 +6,5 @@ const GoodMoralCertificates = () => {
     )
 }
 
+GoodMoralCertificates.rolesAllowed = "Admin"
 export default GoodMoralCertificates

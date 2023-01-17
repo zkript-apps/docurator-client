@@ -15,11 +15,11 @@ const useAuth = () => {
   } = useQuery(
     "verifyAuth",
     async () => {
-      const token = Cookies.get("l_auth");
+      const token = Cookies.get("l_auth") as null | undefined;
       return await verifyAuth(token);
     },
     {
-      onError: (data) => {
+      onError: (data: any) => {
         if (router.pathname !== "/") {
           toast.error(data, {
             id: "authenticateUser",

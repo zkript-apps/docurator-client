@@ -6,4 +6,5 @@ const BirthCertificates = () => {
     )
 }
 
+BirthCertificates.rolesAllowed = "Admin"
 export default BirthCertificates

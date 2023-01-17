@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
@@ -6,7 +7,6 @@ import {
     XMarkIcon,
     CodeBracketIcon,
     AdjustmentsHorizontalIcon,
-    BuildingLibraryIcon,
     AcademicCapIcon
 } from '@heroicons/react/24/outline'
 import Cookies from 'js-cookie'
@@ -116,6 +116,7 @@ const Dashboard = ({ currentPage }: any) => {
                                             {adminNavigation.map((item) => (
                                                 <a
                                                     key={item.name}
+                                                    onClick={() => router.push(`${item.href}`)}
                                                     className={classNames(
                                                         item.current ? 'bg-indigo-800 text-white cursor-pointer' : 'text-indigo-100 hover:bg-indigo-600',
                                                         'group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer'
@@ -147,7 +148,7 @@ const Dashboard = ({ currentPage }: any) => {
                                 {adminNavigation.map((item) => (
                                     <a
                                         key={item.name}
-                                        href={item.href}
+                                        onClick={() => router.push(`${item.href}`)}
                                         className={classNames(
                                             item.current ? 'bg-indigo-800 text-white cursor-pointer' : 'text-indigo-100 hover:bg-indigo-600',
                                             'group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer'

@@ -7,7 +7,7 @@ const useUpdateSchools = () => {
   const queryClient = new QueryClient();
 
   const { mutate: triggerUpdateSchool, isLoading: isUpdateSchoolLoading } =
-    useMutation(async (data) => await updateSchool(data[0], data[1]), {
+    useMutation(async (data: any[]) => await updateSchool(data[0], data[1]), {
       onSuccess: () => {
         queryClient.invalidateQueries("verifyAuth");
         toast.success("Successfully updated school information", {
@@ -15,7 +15,7 @@ const useUpdateSchools = () => {
           duration: 3000,
         });
       },
-      onError: (err) => {
+      onError: (err: any) => {
         toast.error(err, {
           id: "updateSchool",
           duration: 5000,

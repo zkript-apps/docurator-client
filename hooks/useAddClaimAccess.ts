@@ -5,14 +5,14 @@ import { useEffect } from "react";
 
 const useAddClaimAccess = () => {
   const { mutate: triggerAddClaimAccess, isLoading: isAddClaimAccessLoading } =
-    useMutation(async (data) => await addClaimAccess(data), {
+    useMutation(async (data: any) => await addClaimAccess(data), {
       onSuccess: () => {
         toast.success("Successfully Sent your records", {
           id: "addClaimAccess",
           duration: 3000,
         });
       },
-      onError: (err) => {
+      onError: (err: any) => {
         toast.error(err, {
           id: "addClaimAccess",
           duration: 5000,

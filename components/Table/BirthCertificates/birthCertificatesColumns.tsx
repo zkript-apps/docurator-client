@@ -3,7 +3,7 @@ export const BIRTH_CERTIFICATE_COLUMNS = [
     {
         Header: "lrn",
         accessor: "studentId.lrn",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -14,7 +14,7 @@ export const BIRTH_CERTIFICATE_COLUMNS = [
     {
         Header: "Email",
         accessor: "studentId.email",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -25,7 +25,7 @@ export const BIRTH_CERTIFICATE_COLUMNS = [
     {
         Header: "Mobile Number",
         accessor: "studentId.phoneNumber",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -36,7 +36,7 @@ export const BIRTH_CERTIFICATE_COLUMNS = [
     {
         Header: "School Name",
         accessor: "studentId.schoolName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {

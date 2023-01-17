@@ -4,7 +4,7 @@ export const STUDENT_COLUMNS = [
     {
         Header: "LRN",
         accessor: "studentId.lrn",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -15,7 +15,7 @@ export const STUDENT_COLUMNS = [
     {
         Header: "Last Name",
         accessor: "studentId.lastName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -26,7 +26,7 @@ export const STUDENT_COLUMNS = [
     {
         Header: "First Name",
         accessor: "studentId.firstName",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -37,7 +37,7 @@ export const STUDENT_COLUMNS = [
     {
         Header: "Email",
         accessor: "studentId.userId.email",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return value
             } else {
@@ -48,7 +48,7 @@ export const STUDENT_COLUMNS = [
     {
         Header: "Date of Birth (dd/mm/yyyy)",
         accessor: "studentId.dateOfBirth",
-        Cell: ({ value }) => {
+        Cell: ({ value }: any) => {
             if (value) {
                 return format(new Date(value), "dd/MM/yyyy");
             } else {

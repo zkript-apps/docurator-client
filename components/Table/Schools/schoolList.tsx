@@ -4,7 +4,6 @@ import useSchools from "../../../hooks/useSchools";
 import useAuth from "../../../hooks/useAuth";
 import useGetStudent from '../../../hooks/useGetStudent';
 import useAddClaimAccess from "../../../hooks/useAddClaimAccess";
-import useClaimAccess from "../../../hooks/useClaimAccess";
 import useGetAllClaimAccess from "../../../hooks/useGetAllClaimAccess";
 
 const SchoolsList = () => {
@@ -24,22 +23,22 @@ const SchoolsList = () => {
         refetchSchools
     }, [verifyLoginData, schools, schoolsData, refetchSchools, allClaimAccessData]);
 
-    const schoolsWithAccess = allClaimAccess?.filter((school) => school?.studentId?._id === studentInformation?._id)
-    const schoolIdWithAccess = schoolsWithAccess?.map((school) => school?.schoolId?.toString())
-    const sendData = (e) => {
+    const schoolsWithAccess = allClaimAccess?.filter((school: any) => school?.studentId?._id === studentInformation?._id)
+    const schoolIdWithAccess = schoolsWithAccess?.map((school: any) => school?.schoolId?.toString())
+    const sendData = (e: any) => {
         const lrn = studentInformation?.lrn
         const schoolId = e
         triggerAddClaimAccess({
             lrn,
             schoolId,
-        }, { onSuccess: () => { document?.getElementById("claimAccessForm")?.reset(); refetchSchools } })
+        }, { onSuccess: () => { refetchSchools } })
     }
 
     const SCHOOLS_COLUMNS = [
         {
             Header: "School Name",
             accessor: "schoolName",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -50,7 +49,7 @@ const SchoolsList = () => {
         {
             Header: "Email",
             accessor: "schoolEmail",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -61,7 +60,7 @@ const SchoolsList = () => {
         {
             Header: "Mobile Number",
             accessor: "schoolPhoneNumber",
-            Cell: ({ value }) => {
+            Cell: ({ value }: any) => {
                 if (value) {
                     return value
                 } else {
@@ -71,7 +70,7 @@ const SchoolsList = () => {
         },
         {
             Header: 'Action',
-            Cell: ({ row }) => (
+            Cell: ({ row }: any) => (
                 <button
                     disabled={schoolIdWithAccess?.includes(row?.original?._id?.toString()) ? true : false}
                     onClick={() => sendData(row.original._id)}

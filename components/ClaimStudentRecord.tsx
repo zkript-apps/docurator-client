@@ -1,14 +1,16 @@
+import { useRef } from 'react';
 import useAddClaimAccess from '../hooks/useAddClaimAccess'
 
 const ClaimStudentRecords = () => {
+    const formRef = useRef(null)
     const { triggerAddClaimAccess } = useAddClaimAccess()
-    const _submitHandler = (e) => {
+    const _submitHandler = (e: any) => {
         e.preventDefault();
         const lrn = e.target.lrn.value
 
         triggerAddClaimAccess({
             lrn,
-        }, { onSuccess: () => { document?.getElementById("claimAccessForm")?.reset() } })
+        })
     }
 
     return (
@@ -18,10 +20,10 @@ const ClaimStudentRecords = () => {
                     <div className="max-w-6xl mx-auto lg:px-8">
                         <div className="flex flex-col">
                             <h2 className="text-2xl font-semibold text-gray-900">
-                                Claim your records (Personal Information and Learner's Permanent Records)
+                                Claim your records (Personal Information and Learner&apos;s Permanent Records)
                             </h2>
                             <div className="w-1/2 p-6 mt-8 mb-4 border rounded-md w-5/8">
-                                <form id="claimAccessForm" onSubmit={_submitHandler}>
+                                <form id="claimAccessForm" onSubmit={_submitHandler} ref={formRef}>
                                     <label
                                         htmlFor="email"
                                         className="block mt-4 font-medium text-gray-700 text-md"

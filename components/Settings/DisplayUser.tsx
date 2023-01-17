@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useAuth from '../../hooks/useAuth';
 
-const DisplayUser = ({ isChangePasswordActive, isEditUserActive }) => {
+const DisplayUser = ({ isChangePasswordActive, isEditUserActive }: any) => {
     const { verifyLoginData, isVerifyLoginLoading, refetchVerifyLogin } = useAuth();
     const [lastName, setLastName] = useState("")
     const [firstName, setFirstName] = useState("")
@@ -14,11 +14,11 @@ const DisplayUser = ({ isChangePasswordActive, isEditUserActive }) => {
         refetchVerifyLogin
     }, [refetchVerifyLogin, isEditUserActive])
 
-    const setIsChangePasswordActive = (e) => {
+    const setIsChangePasswordActive = (e: any) => {
         isChangePasswordActive(e)
     }
 
-    const setIsEditUserActive = (e) => {
+    const setIsEditUserActive = (e: any) => {
         isEditUserActive(e)
     }
 

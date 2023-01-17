@@ -1,9 +1,10 @@
 import StudentDashboard from "../components/StudentDashboard"
 
-const Settings = () => {
+const StudentSettings = () => {
     return (
         <StudentDashboard currentPage='Settings' />
     )
 }
 
-export default Settings
+StudentSettings.rolesAllowed = "Students"
+export default StudentSettings

@@ -5,5 +5,5 @@ const VerifyAccount = () => {
         <SuperAdminDashboard currentPage={"Verify Accounts"} />
     )
 }
-
+VerifyAccount.rolesAllowed = "Super Admin"
 export default VerifyAccount

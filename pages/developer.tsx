@@ -6,4 +6,5 @@ const Developer = () => {
     )
 }
 
+Developer.rolesAllowed = "Admin"
 export default Developer

@@ -3,7 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import useUser from '../../hooks/useUser';
 
-const EditUser = ({ isEditUserActive }) => {
+const EditUser = ({ isEditUserActive }: any) => {
     const { verifyLoginData, refetchVerifyLogin } = useAuth();
     const { triggerUpdateUser, isUpdateUserLoading } = useUser()
     const [lastName, setLastName] = useState("")
@@ -26,7 +26,7 @@ const EditUser = ({ isEditUserActive }) => {
     ])
 
 
-    const _submitHandler = (e) => {
+    const _submitHandler = (e: any) => {
         e.preventDefault()
         const inputLastName = e.target.lastName.value;
         const inputFirstName = e.target.firstName.value;
@@ -55,7 +55,7 @@ const EditUser = ({ isEditUserActive }) => {
         }
     }
 
-    const setIsEditUserActive = (e) => {
+    const setIsEditUserActive = (e: any) => {
         isEditUserActive(e)
     }
 
