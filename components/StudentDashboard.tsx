@@ -42,7 +42,6 @@ const StudentDashboard = ({ currentPage }: any) => {
         { name: "Student's Information", href: '/student-information', icon: DocumentTextIcon, current: currentPage === "Student's Information" ? true : false },
         { name: 'School List', href: '/school-list', icon: BuildingLibraryIcon, current: currentPage === "School List" ? true : false },
         { name: 'Form 138 List', href: '/student-form138', icon: DocumentTextIcon, current: currentPage === "Form 138 List" ? true : false },
-        { name: 'Birth Certificate', href: '/student-birth-certificate', icon: DocumentTextIcon, current: currentPage === "Student Birth Certificate" ? true : false },
         { name: 'Settings', href: '/student-settings', icon: AdjustmentsHorizontalIcon, current: currentPage === "Settings" ? true : false }
     ]
 
